@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="description" content="МОНС — квартал от Брусники в Бутырском. Один будний день как он будет устроен.">
+<title>МОНС · Один будний день · Брусника</title>
+<link rel="icon" type="image/svg+xml" href="icon/Знак красный/Знак_красный.svg">
+<link rel="icon" type="image/png" href="icon/Знак красный/Знак_красный.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="image/fasad_bashni_park_ostankino_1.png" as="image">
+<link rel="prefetch" href="image/fasad_bashni_vecher_krupno.png" as="image">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   V4 · CINEMA REEL — A24 Immersive
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --c-bg:#f3ede2;
+  --c-bg-2:#e8dfd0;
+  --c-ink:#0a0a0a;
+  --c-ink-70:#3a3a3a;
+  --c-ink-50:#6a6a6a;
+  --c-ink-30:#a0a0a0;
+  --c-hair:rgba(10,10,10,.12);
+  --c-hair-soft:rgba(10,10,10,.06);
+  --c-accent:#5b6e85;       /* холодный cinematic blue */
+  --c-accent-warm:#c89870;
+  --c-red:#FF001F;
+  --c-night:#000;
+
+  --ff-serif:'Source Serif 4','New York',Georgia,serif;
+  --ff-sans:'Inter',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --ff-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;
+  --ff:var(--ff-sans);
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-cinema:cubic-bezier(.65,0,.35,1);
+  --t-xs:.5s;--t-s:.9s;--t-m:1.4s;--t-l:2s;--t-xl:3s;
+  --s-1:8px;--s-2:16px;--s-3:24px;--s-4:32px;--s-5:48px;--s-6:64px;
+  --s-7:96px;--s-8:128px;--s-9:160px;--s-10:200px;--s-11:240px;--s-12:320px;
+
+  --pad:clamp(28px,5vw,140px);
+  --measure:60ch;
+
+  --z-progress:200;--z-header:150;--z-mobile-nav:140;--z-mobile-cta:130;
+
+  --fs-display:clamp(96px,14vw,210px);
+  --fs-h1:clamp(58px,7.5vw,128px);
+  --fs-h2:clamp(40px,5.4vw,84px);
+  --fs-h3:clamp(28px,3.2vw,52px);
+  --fs-h4:clamp(20px,2vw,28px);
+  --fs-lead:clamp(20px,1.8vw,26px);
+  --fs-body:clamp(16px,1.05vw,18px);
+  --fs-caption:13px;
+  --fs-eyebrow:10.5px;
+
+  --fw-light:300;--fw-reg:400;--fw-med:500;
+  --ls-display:-.024em;--ls-body:-.003em;--ls-neutral:0;--ls-wide:.18em;
+  --lh-tight:1;--lh-snug:1.1;--lh-body:1.6;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--c-night)}
+body{margin:0;font-family:var(--ff-sans);font-weight:var(--fw-reg);font-size:var(--fs-body);line-height:var(--lh-body);letter-spacing:var(--ls-body);color:var(--c-ink);background:var(--c-bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-feature-settings:'ss01';overflow-x:hidden}
+img{max-width:100%;display:block;height:auto;filter:contrast(1.08) saturate(.86) sepia(.04)}
+a{color:inherit;text-decoration:none;transition:opacity var(--t-xs) var(--ease)}
+a:hover{opacity:.7}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:var(--c-ink);color:var(--c-bg)}
+:where(a,button,summary,input):focus-visible{outline:1px solid var(--c-accent-warm);outline-offset:3px;border-radius:1px}
+
+.num,.scene-time,.act-timerange,.hero-meta,.facts,.plans-table,.phone-xl,.finale-time,.time-xl,.void-time,.q-time,.q-source{font-variant-numeric:tabular-nums;font-feature-settings:'tnum'}
+
+.wrap{width:100%;padding-left:var(--pad);padding-right:var(--pad);max-width:1680px;margin-inline:auto;position:relative}
+.wrap-narrow{width:100%;padding-left:var(--pad);padding-right:var(--pad);max-width:880px;margin-inline:auto}
+.grid-12{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px)}
+
+.eyebrow{font-family:var(--ff-mono);font-size:var(--fs-eyebrow);font-weight:var(--fw-med);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--c-ink-50)}
+.eyebrow .dot{color:var(--c-accent-warm);margin-right:.6em}
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER — film slate header
+   ═══════════════════════════════════════════════════════════════ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:var(--z-header);
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  color:#fff;border-bottom:1px solid rgba(255,255,255,.1);
+  transition:transform var(--t-s) var(--ease),background var(--t-s) var(--ease),color var(--t-s) var(--ease);
+}
+.site-header.is-hidden{transform:translateY(-105%)}
+.header-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:32px}
+.brand{display:flex;align-items:center;gap:14px;font-weight:var(--fw-med);font-size:14px}
+.brand-logo{display:inline-flex;width:96px;height:20px;color:var(--c-red)}
+.brand-logo svg{width:100%;height:100%;display:block;fill:currentColor}
+.brand-divider{display:inline-block;width:1px;height:18px;background:currentColor;opacity:.32}
+.brand-name{display:inline-block;font-family:var(--ff-mono);font-weight:var(--fw-med);letter-spacing:var(--ls-wide);font-size:var(--fs-eyebrow);text-transform:uppercase}
+.main-nav{display:flex;gap:var(--s-4);align-items:center}
+.main-nav a{font-family:var(--ff-mono);font-size:var(--fs-eyebrow);font-weight:var(--fw-med);letter-spacing:var(--ls-wide);text-transform:uppercase}
+.header-phone{font-family:var(--ff-mono);font-size:13px;font-weight:var(--fw-med);font-variant-numeric:tabular-nums}
+.burger{display:none;width:24px;height:24px;background:none;border:0;padding:0;cursor:pointer;position:relative}
+.burger span{display:block;position:absolute;left:2px;right:2px;height:1.5px;background:currentColor;transition:transform var(--t-xs) var(--ease),top var(--t-xs) var(--ease)}
+.burger span:nth-child(1){top:8px}.burger span:nth-child(2){top:14px}
+.burger.is-open span:nth-child(1){top:11px;transform:rotate(45deg)}
+.burger.is-open span:nth-child(2){top:11px;transform:rotate(-45deg)}
+@media(max-width:820px){.main-nav,.header-phone{display:none}.burger{display:inline-flex}}
+
+.mobile-nav{position:fixed;top:0;right:0;bottom:0;width:min(88vw,380px);z-index:var(--z-mobile-nav);background:#0a0a0a;color:#fff;padding:calc(var(--s-8) + 8px) var(--s-4) var(--s-5);transform:translateX(100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;visibility:hidden}
+.mobile-nav.is-open{transform:none;visibility:visible}
+.mobile-nav-list{display:flex;flex-direction:column;gap:var(--s-3)}
+.mobile-nav-item{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h3);line-height:1.06;color:#fff;padding:8px 0}
+.mobile-nav-phone{margin-top:auto;font-family:var(--ff-mono);font-size:var(--fs-caption);color:rgba(255,255,255,.6);padding-top:var(--s-4);border-top:1px solid rgba(255,255,255,.16);font-variant-numeric:tabular-nums}
+.mobile-nav-scrim{position:fixed;inset:0;z-index:calc(var(--z-mobile-nav) - 1);background:rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.mobile-nav-scrim.is-open{opacity:1;pointer-events:auto}
+body.nav-open{overflow:hidden}
+.mobile-cta{position:fixed;left:0;right:0;bottom:0;z-index:var(--z-mobile-cta);display:none;align-items:center;justify-content:space-between;gap:var(--s-2);padding:14px 20px;background:var(--c-ink);color:#fff;font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:var(--ls-wide);text-transform:uppercase;transform:translateY(100%);transition:transform .4s var(--ease)}
+.mobile-cta.is-visible{transform:none}
+@media(max-width:820px){.mobile-cta{display:flex}}
+@media(min-width:821px){.mobile-nav,.mobile-nav-scrim,.mobile-cta{display:none}}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO — opening title
+   ═══════════════════════════════════════════════════════════════ */
+.hero{position:relative;height:100vh;min-height:100svh;overflow:hidden;background:#000;color:#f3ede2;isolation:isolate}
+.hero-bg{position:absolute;inset:-6%;z-index:0;background:url('image/fasad_bashni_park_ostankino_1.png') center 35%/cover no-repeat;will-change:transform;transform:translate3d(0,0,0) scale(1.06);transition:transform .05s linear;animation:slowZoom 18s var(--ease-cinema) infinite alternate;filter:contrast(1.1) saturate(.84) sepia(.06) hue-rotate(-4deg)}
+@keyframes slowZoom{from{transform:scale(1.06)}to{transform:scale(1.14)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.18) 30%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.92) 100%)}
+/* film grain overlay */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/></svg>");mix-blend-mode:overlay;opacity:.3}
+.hero-in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(70px,10vh,140px)}
+/* Slate — короткая cinema-плашка вверху hero, на русском */
+.hero-in::before{
+  content:"Брусника · Бутырский · Москва · 2027";
+  position:absolute;top:clamp(120px,15vh,180px);left:var(--pad);
+  font-family:var(--ff-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(243,237,226,.65);
+  padding:6px 0;border-top:1px solid rgba(243,237,226,.32);border-bottom:1px solid rgba(243,237,226,.32);
+}
+.hero-eyebrow{
+  color:var(--c-accent-warm);
+  margin-bottom:var(--s-3);
+  letter-spacing:.32em;
+}
+.hero-title{font-family:var(--ff-serif);font-weight:var(--fw-light);font-style:italic;font-size:var(--fs-display);line-height:.94;letter-spacing:-.026em;margin:0;text-wrap:balance;color:#f3ede2}
+.hero-title .amp{color:var(--c-accent-warm);display:inline-block;font-style:normal;transform:translateY(.04em)}
+.hero-sub{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-lead);line-height:1.42;color:rgba(243,237,226,.86);margin:var(--s-5) 0 0;max-width:36ch;text-wrap:pretty}
+.hero-meta{display:flex;gap:var(--s-3);margin-top:var(--s-5);font-family:var(--ff-mono);font-size:11px;color:rgba(243,237,226,.6);letter-spacing:.32em;text-transform:uppercase;flex-wrap:wrap}
+.hero-corner{
+  position:absolute;top:clamp(120px,15vh,180px);right:var(--pad);z-index:3;
+  text-align:right;font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(243,237,226,.55);line-height:1.7;
+  padding:8px 12px;border:1px solid rgba(243,237,226,.22);
+}
+.hero-corner strong{color:#f3ede2;font-weight:var(--fw-med)}
+.hero-scroll{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:42px;background:rgba(243,237,226,.4);animation:scrollPulse 2.6s var(--ease) infinite}
+@keyframes scrollPulse{0%{transform:translateX(-50%) scaleY(0);transform-origin:top}45%{transform:translateX(-50%) scaleY(1);transform-origin:top}55%{transform:translateX(-50%) scaleY(1);transform-origin:bottom}100%{transform:translateX(-50%) scaleY(0);transform-origin:bottom}}
+
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:var(--z-progress);pointer-events:none}
+.scroll-progress::after{content:"";display:block;height:100%;background:var(--c-accent-warm);transform:scaleX(var(--p,0));transform-origin:left center;transition:transform .1s linear}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROLOGUE
+   ═══════════════════════════════════════════════════════════════ */
+.prologue{padding:clamp(160px,24vh,300px) 0 clamp(140px,22vh,260px);background:var(--c-bg);text-align:center}
+.prologue-inner{display:flex;flex-direction:column;align-items:center;gap:var(--s-3);max-width:none}
+.prologue .eyebrow{margin-bottom:var(--s-5);display:block}
+.prologue-lead{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.018em;max-width:18ch;color:var(--c-ink);margin:0 0 var(--s-3);text-wrap:balance;text-align:center}
+.prologue-sub{font-family:var(--ff-serif);font-weight:var(--fw-light);font-size:var(--fs-lead);line-height:1.42;color:var(--c-ink-50);max-width:30ch;margin:0;text-align:center}
+.prologue-hair{height:1px;background:var(--c-accent-warm);margin:clamp(60px,10vh,120px) auto clamp(40px,6vh,80px);width:48px;opacity:.7}
+.prologue-bridge{font-family:var(--ff-serif);font-weight:var(--fw-reg);font-size:var(--fs-body);line-height:1.7;color:var(--c-ink-70);max-width:54ch;margin:0;text-align:center}
+.prologue-bridge strong{font-weight:var(--fw-med);color:var(--c-ink)}
+.prologue-cta{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h4);line-height:1.16;color:var(--c-ink);margin-top:var(--s-5);text-wrap:balance;text-align:center}
+.prologue-cta::before{content:"·";color:var(--c-accent-warm);margin-right:14px;font-style:normal}
+
+.day-opener{padding:clamp(140px,22vh,260px) 0 clamp(80px,12vh,160px);text-align:center;background:#000;color:#f3ede2;position:relative;overflow:hidden}
+.day-opener::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.4;pointer-events:none}
+.day-opener h2{margin:0 auto;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h1);line-height:.96;letter-spacing:-.022em;max-width:14ch;text-wrap:balance}
+.day-opener h2 em{font-style:normal;color:rgba(243,237,226,.4)}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACT — chapter card cinematic
+   ═══════════════════════════════════════════════════════════════ */
+.act{position:relative}
+.act-head{padding:clamp(140px,20vh,240px) 0 clamp(80px,12vh,160px);position:relative;overflow:hidden;background:#000;color:#f3ede2;text-align:center;min-height:60vh;display:flex;align-items:center;justify-content:center}
+.act-head::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.35;pointer-events:none}
+.act-head .wrap{position:relative;z-index:2}
+.act-head-in{display:flex;flex-direction:column;align-items:center;gap:var(--s-3);text-align:center}
+.act-numeral{position:relative !important;width:auto !important;height:auto !important;clip:auto !important;clip-path:none !important;white-space:normal !important;overflow:visible !important;padding:0;margin:0 0 var(--s-3);font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:clamp(80px,11vw,180px);line-height:.85;color:var(--c-accent-warm);letter-spacing:-.04em;opacity:.9}
+.act-timerange{position:relative;z-index:1;font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-reg);letter-spacing:.32em;color:rgba(243,237,226,.65);line-height:1;margin:0 0 var(--s-3);font-variant-numeric:tabular-nums;text-transform:uppercase}
+.act-word{position:relative;z-index:1;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h1);line-height:.96;letter-spacing:-.022em;color:#f3ede2;margin:0;text-wrap:balance}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCENE — каждая = full-bleed cinematic
+   ═══════════════════════════════════════════════════════════════ */
+.scene{padding:clamp(120px,18vh,240px) 0;position:relative}
+.scene+.scene.ly-fullbleed{padding-top:clamp(140px,20vh,260px)}
+.scene.ly-fullbleed+.scene{padding-top:clamp(140px,20vh,260px)}
+.scene-time{font-family:var(--ff-mono);font-weight:var(--fw-med);font-size:11px;letter-spacing:.32em;color:var(--c-accent-warm);line-height:1;margin:0 0 var(--s-5);font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:14px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--c-accent-warm);border-radius:0}
+.scene-title{font-family:var(--ff-serif);font-weight:var(--fw-light);font-style:italic;font-size:var(--fs-h3);line-height:1.08;letter-spacing:-.018em;margin:0 0 var(--s-5);max-width:18ch;text-wrap:balance;color:var(--c-ink)}
+.scene-title em{font-style:normal;color:var(--c-accent-warm)}
+.scene-body{max-width:var(--measure);font-family:var(--ff-serif);font-size:var(--fs-body);line-height:1.7;color:var(--c-ink-70);font-weight:var(--fw-reg)}
+.scene-body p+p{margin-top:1em}
+.scene-body p.lead{color:var(--c-ink);font-size:calc(var(--fs-body) * 1.06);font-weight:var(--fw-reg)}
+.scene-body p.lead.drop-cap::first-letter{all:unset;float:left;font-family:var(--ff-serif);font-weight:var(--fw-light);font-style:italic;font-size:5em;line-height:.9;margin:.06em .14em -.05em 0;color:var(--c-accent-warm)}
+
+.callout{margin-top:clamp(36px,5vh,64px);padding:18px 20px;background:var(--c-night);color:#f3ede2;font-family:var(--ff-mono);font-size:11px;line-height:1.55;letter-spacing:.18em;max-width:62ch;text-transform:uppercase;border-radius:0}
+.callout strong{display:block;font-weight:var(--fw-med);color:var(--c-accent-warm);margin-bottom:8px;font-variant-numeric:tabular-nums;letter-spacing:.22em;text-transform:uppercase}
+.callout span{color:rgba(243,237,226,.78);font-family:var(--ff-serif);text-transform:none;font-size:13.5px;letter-spacing:0;display:block;line-height:1.6;font-style:italic;font-weight:var(--fw-light)}
+
+.dialog{margin:clamp(28px,4vh,44px) 0;padding:0 0 0 clamp(16px,2vw,28px);border-left:2px solid var(--c-accent-warm);display:flex;flex-direction:column;gap:6px;font-family:var(--ff-serif);font-style:italic;font-size:var(--fs-body);line-height:1.55;color:var(--c-ink-70);font-weight:var(--fw-reg)}
+.dialog span{display:block}
+.dialog span.parent{color:var(--c-ink)}
+
+.fig{position:relative;overflow:hidden;background:var(--c-bg-2)}
+.fig::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.32) 100%);z-index:1;pointer-events:none}
+.fig img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform var(--t-xl) var(--ease-cinema);filter:contrast(1.08) saturate(.86) sepia(.05)}
+.fig.is-in img{transform:scale(1)}
+
+/* ─── SPLIT — киношный split с overlay slate ─── */
+.ly-split{padding:0;position:relative}
+.ly-split-grid{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.ly-split .left{padding:clamp(120px,18vh,220px) clamp(40px,5vw,80px) clamp(120px,18vh,220px) var(--pad);display:flex;flex-direction:column;justify-content:center;max-width:760px;margin-left:auto;background:var(--c-bg)}
+.ly-split .right{position:relative;background:#000;overflow:hidden}
+.ly-split .right .fig{position:sticky;top:0;height:100vh;outline:none}
+.ly-split.reverse .ly-split-grid{direction:rtl}
+.ly-split.reverse .ly-split-grid>*{direction:ltr}
+.ly-split.reverse .left{margin-left:0;margin-right:auto}
+@media(max-width:860px){.ly-split-grid{grid-template-columns:1fr}.ly-split .right .fig{position:relative;height:80vh}.ly-split .left{padding:80px var(--pad)}.ly-split.reverse .ly-split-grid{direction:ltr}}
+
+/* ─── FULLBLEED — главный cinematic mode ─── */
+.ly-fullbleed{padding:0;position:relative}
+.ly-fullbleed .fig{width:100vw;height:100vh;margin-left:calc(50% - 50vw);outline:none;position:relative}
+.ly-fullbleed .fig::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.36) 0%,transparent 30%,transparent 60%,rgba(0,0,0,.78) 100%);z-index:2;pointer-events:none}
+.ly-fullbleed .fig img{transform:scale(1.16);filter:contrast(1.12) saturate(.86) sepia(.06)}
+.ly-fullbleed .fig.is-in img{transform:scale(1.04)}
+.ly-fullbleed .below{padding:clamp(80px,14vh,160px) 0 clamp(80px,14vh,160px);background:var(--c-bg)}
+.ly-fullbleed .below .inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,120px);align-items:start}
+.ly-fullbleed .below .inner .left-col .scene-title{margin-bottom:0}
+@media(max-width:820px){.ly-fullbleed .below .inner{grid-template-columns:1fr;gap:28px}.ly-fullbleed .fig{height:80vh}}
+
+/* ─── ASYM ─── */
+.ly-asym .grid-12{row-gap:clamp(30px,5vh,70px);align-items:start}
+.ly-asym .time-col{grid-column:1/span 5;padding-top:clamp(0px,3vh,30px)}
+.ly-asym .time-col .time-xl{display:block;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h1);line-height:1;letter-spacing:-.026em;color:var(--c-ink);font-variant-numeric:tabular-nums}
+.ly-asym .media-col{grid-column:7/span 6}
+.ly-asym .media-col .fig{aspect-ratio:4/5;height:auto}
+.ly-asym .text-col{grid-column:2/span 5;margin-top:clamp(30px,4vh,60px)}
+@media(max-width:860px){.ly-asym .time-col,.ly-asym .media-col,.ly-asym .text-col{grid-column:1/-1}.ly-asym .media-col .fig{aspect-ratio:4/3}}
+
+/* ─── PULLQUOTE ─── */
+.ly-quote{background:#000;color:#f3ede2;padding:clamp(120px,18vh,220px) 0;position:relative;overflow:hidden}
+.ly-quote::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.3;pointer-events:none}
+.ly-quote .quote-hero{padding:clamp(40px,8vh,120px) 0 clamp(40px,8vh,120px);max-width:38ch;margin-left:auto;margin-right:auto;position:relative;text-align:center;z-index:2}
+.ly-quote .q-time{display:block;font-family:var(--ff-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c-accent-warm);font-weight:var(--fw-med);margin-bottom:var(--s-5);font-variant-numeric:tabular-nums}
+.ly-quote .q-text{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h2);line-height:1.14;letter-spacing:-.018em;color:#f3ede2;margin:0;text-wrap:balance}
+.ly-quote .q-text em{font-style:italic;color:var(--c-accent-warm)}
+.ly-quote .q-source{margin-top:var(--s-5);font-family:var(--ff-serif);font-style:italic;font-size:14px;color:rgba(243,237,226,.6);line-height:1.6;max-width:42ch;margin-left:auto;margin-right:auto;font-variant-numeric:tabular-nums}
+.ly-quote .quote-media{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px);row-gap:clamp(14px,2vh,28px);margin-top:clamp(50px,8vh,100px);align-items:end;position:relative;z-index:2}
+.ly-quote .quote-media .fig.a{grid-column:2/span 6;aspect-ratio:16/11}
+.ly-quote .quote-media .fig.b{grid-column:8/span 4;aspect-ratio:3/4;margin-bottom:clamp(30px,5vh,70px)}
+.ly-quote .quote-text{grid-column:2/span 8;margin-top:clamp(50px,7vh,90px);max-width:var(--measure);color:rgba(243,237,226,.85)}
+.ly-quote .quote-text p.lead{color:#f3ede2;font-style:italic;font-weight:var(--fw-light)}
+.ly-quote .quote-text .callout{background:rgba(243,237,226,.06);border:1px solid rgba(243,237,226,.16)}
+.ly-quote .quote-text .callout strong{color:var(--c-accent-warm)}
+.ly-quote .quote-text .callout span{color:rgba(243,237,226,.7)}
+@media(max-width:820px){.ly-quote .quote-media .fig.a,.ly-quote .quote-media .fig.b,.ly-quote .quote-text{grid-column:1/-1}.ly-quote .quote-media .fig.b{margin-bottom:0}}
+
+/* ─── VOID — black cut ─── */
+.ly-void{background:#000;color:#f3ede2;min-height:min(80vh,720px);display:grid;place-items:center;text-align:center;padding:clamp(80px,12vh,150px) 0;position:relative;overflow:hidden}
+.ly-void::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.4;pointer-events:none}
+.ly-void::after{content:"";position:absolute;left:50%;width:1px;height:48px;bottom:clamp(50px,8vh,100px);background:rgba(243,237,226,.4);transform:translateX(-50%)}
+.ly-void .void-text{max-width:24ch;margin:0 auto;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h3);line-height:1.16;letter-spacing:-.018em;color:#f3ede2;text-wrap:balance;position:relative;z-index:2}
+.ly-void .void-text em{color:var(--c-accent-warm)}
+.ly-void .void-time{display:block;font-family:var(--ff-mono);font-size:11px;letter-spacing:.32em;font-weight:var(--fw-med);text-transform:uppercase;color:var(--c-accent-warm);margin-bottom:var(--s-5);font-variant-numeric:tabular-nums;position:relative;z-index:2}
+
+/* ─── TRIPTYCH ─── */
+.ly-trip .trip-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px);row-gap:clamp(24px,4vh,48px);align-items:start}
+.ly-trip .trip-text{grid-column:1/span 4;position:sticky;top:120px}
+.ly-trip .trip-media-a{grid-column:5/span 8;aspect-ratio:16/10}
+.ly-trip .trip-media-b{grid-column:5/span 4;aspect-ratio:1/1;margin-top:clamp(20px,3vh,40px)}
+.ly-trip .trip-media-c{grid-column:9/span 4;aspect-ratio:1/1;margin-top:clamp(20px,3vh,40px)}
+@media(max-width:820px){.ly-trip .trip-text,.ly-trip .trip-media-a,.ly-trip .trip-media-b,.ly-trip .trip-media-c{grid-column:1/-1;position:static}.ly-trip .trip-media-a{aspect-ratio:4/3}.ly-trip .trip-media-b,.ly-trip .trip-media-c{aspect-ratio:4/3;margin-top:0}}
+
+/* ─── STACK ─── */
+.ly-stack .stack-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px);align-items:end;row-gap:clamp(40px,6vh,80px)}
+.ly-stack .stack-time{grid-column:1/span 4;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h1);line-height:.92;letter-spacing:-.026em;color:var(--c-ink);padding-bottom:.08em;font-variant-numeric:tabular-nums}
+.ly-stack .stack-media{grid-column:5/span 8;aspect-ratio:3/2}
+.ly-stack .stack-text{grid-column:5/span 6;margin-top:clamp(20px,3vh,40px)}
+.ly-stack .stack-text .scene-title{margin-top:0}
+@media(max-width:820px){.ly-stack .stack-grid>*{grid-column:1/-1}.ly-stack .stack-media{aspect-ratio:4/3}}
+
+/* ─── DIPTYCH ─── */
+.ly-dip .dip-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px);row-gap:clamp(30px,5vh,60px);align-items:start}
+.ly-dip .dip-a{grid-column:1/span 7;aspect-ratio:4/3}
+.ly-dip .dip-b{grid-column:9/span 4;aspect-ratio:3/4;margin-top:clamp(60px,10vh,140px)}
+.ly-dip .dip-text{grid-column:2/span 7;margin-top:clamp(30px,4vh,60px)}
+.ly-dip .dip-time{grid-column:10/span 3;margin-top:clamp(30px,4vh,60px);text-align:right}
+.ly-dip .dip-time .time-lg{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h2);line-height:1;letter-spacing:-.022em;color:var(--c-ink);display:block;font-variant-numeric:tabular-nums}
+.ly-dip .dip-time .time-lbl{display:block;font-family:var(--ff-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c-accent-warm);margin-top:14px;font-weight:var(--fw-med)}
+@media(max-width:820px){.ly-dip .dip-grid>*{grid-column:1/-1;margin-top:0}.ly-dip .dip-a,.ly-dip .dip-b{aspect-ratio:4/3}.ly-dip .dip-time{text-align:left}}
+
+/* ─── INTERLUDE — film black break ─── */
+.interlude{background:#000;color:#f3ede2;padding:clamp(140px,20vh,220px) 0;position:relative;overflow:hidden}
+.interlude::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.35;pointer-events:none}
+.interlude .wrap-narrow{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--s-5);z-index:2}
+.interlude-text{max-width:24ch;margin:0 auto;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h2);line-height:1.14;letter-spacing:-.018em;color:#f3ede2;text-align:center;text-wrap:balance}
+.interlude-text em{font-style:italic;color:var(--c-accent-warm)}
+.interlude-text strong{font-weight:var(--fw-reg);color:#f3ede2;font-style:normal}
+.interlude-rule{display:block;width:48px;height:1px;background:var(--c-accent-warm);margin:0 auto;opacity:.85}
+
+/* ─── FINALE ─── */
+.finale{background:#000;color:#f3ede2;padding:clamp(140px,20vh,260px) 0 clamp(100px,16vh,180px);position:relative;overflow:hidden;isolation:isolate}
+.finale::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 30%,rgba(200,152,112,.12) 0%,transparent 55%)}
+.finale::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.3;pointer-events:none;z-index:1}
+.finale-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(14px,1.8vw,32px);row-gap:clamp(40px,6vh,80px);align-items:start;text-align:center}
+.finale-time-col{grid-column:1/-1}
+.finale-time{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-display);line-height:.94;letter-spacing:-.026em;color:#f3ede2;font-variant-numeric:tabular-nums;display:block}
+.finale-time-caption{display:block;margin-top:var(--s-3);font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:.32em;text-transform:uppercase;color:rgba(243,237,226,.5)}
+.finale-text{grid-column:3/span 8;color:rgba(243,237,226,.82);text-align:left}
+.finale-text .scene-title{color:#f3ede2;max-width:18ch}
+.finale-text p{max-width:var(--measure)}.finale-text p.lead{color:#f3ede2}
+.finale-bottom{margin-top:clamp(80px,14vh,160px);padding-top:clamp(40px,5vh,80px);border-top:1px solid rgba(243,237,226,.18);text-align:center;position:relative;z-index:2}
+.finale-wordmark{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-display);letter-spacing:.02em;line-height:1;color:#f3ede2;display:block}
+.finale-wordmark .letter{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity 1.2s var(--ease-cinema),transform 1.2s var(--ease-cinema)}
+.finale-wordmark.is-in .letter{opacity:1;transform:translateY(0)}
+.finale-wordmark.is-in .letter:nth-child(1){transition-delay:.0s}
+.finale-wordmark.is-in .letter:nth-child(2){transition-delay:.16s}
+.finale-wordmark.is-in .letter:nth-child(3){transition-delay:.32s}
+.finale-wordmark.is-in .letter:nth-child(4){transition-delay:.48s}
+.finale-dot{color:var(--c-accent-warm)}
+@media(max-width:820px){.finale-text{grid-column:1/-1;text-align:left}}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONVERSION — credits roll
+   ═══════════════════════════════════════════════════════════════ */
+.conv{padding:clamp(140px,20vh,260px) 0 clamp(80px,12vh,140px);background:var(--c-bg);text-align:center}
+.conv-head{max-width:32ch;margin:0 auto clamp(60px,10vh,120px)}
+.conv-head .eyebrow{display:inline-block;margin-bottom:var(--s-3)}
+.conv-head h2{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.018em;margin:18px 0 28px;text-wrap:balance;color:var(--c-ink);text-align:center}
+.conv-head p{font-family:var(--ff-serif);font-size:var(--fs-lead);color:var(--c-ink-70);line-height:1.5;max-width:42ch;margin:0 auto;text-wrap:pretty;text-align:center}
+.phone-xl{display:block;font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-h1);letter-spacing:-.022em;line-height:1;color:var(--c-ink);padding:clamp(28px,4vh,46px) 0;border-top:1px solid var(--c-hair);border-bottom:1px solid var(--c-hair);position:relative;font-variant-numeric:tabular-nums;transition:color var(--t-s) var(--ease);text-align:center}
+.phone-xl:hover{color:var(--c-accent-warm);opacity:1}
+.phone-xl::after{content:" ↗";font-style:normal;font-weight:var(--fw-light);transition:transform var(--t-s) var(--ease);display:inline-block}
+.phone-xl:hover::after{transform:translate(4px,-4px)}
+.phone-note{margin-top:18px;font-family:var(--ff-serif);font-style:italic;font-size:13.5px;color:var(--c-ink-50);text-align:center}
+.form-wrap{margin:clamp(60px,8vh,100px) auto 0;max-width:520px;text-align:left}
+.or-sep{font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:.32em;text-transform:uppercase;color:var(--c-accent-warm);margin-bottom:30px;text-align:center}
+.fg{margin-bottom:22px}
+.fg label{display:block;font-family:var(--ff-serif);font-style:italic;font-size:13.5px;color:var(--c-ink-70);margin-bottom:10px}
+.fg input{width:100%;padding:14px 0;border:0;border-bottom:1px solid var(--c-hair);background:transparent;font:inherit;font-family:var(--ff-serif);font-size:var(--fs-body);color:var(--c-ink);outline:none;font-variant-numeric:tabular-nums;transition:border-color var(--t-s) var(--ease)}
+.fg input::placeholder{color:var(--c-ink-30)}
+.fg input:focus{border-bottom-color:var(--c-accent-warm)}
+.btn-submit{display:inline-flex;align-items:center;gap:14px;margin-top:18px;padding:18px 36px;background:var(--c-ink);color:#f3ede2;font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:.32em;text-transform:uppercase;border-radius:0;border:1px solid var(--c-ink);transition:background var(--t-s) var(--ease),transform var(--t-s) var(--ease)}
+.btn-submit::after{content:"↗"}
+.btn-submit:hover{background:var(--c-accent-warm);border-color:var(--c-accent-warm);color:var(--c-night);transform:translateY(-1px);opacity:1}
+.form-note{margin-top:18px;font-family:var(--ff-serif);font-style:italic;font-size:13.5px;color:var(--c-ink-50)}
+
+/* ─── FOOTER — credits ─── */
+.footer{background:#000;color:rgba(243,237,226,.55);padding:clamp(120px,16vh,180px) 0 clamp(70px,10vh,120px);position:relative;overflow:hidden}
+.footer::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay;opacity:.3;pointer-events:none}
+.footer-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-4)}
+.footer-rule{display:block;width:48px;height:1px;background:var(--c-accent-warm);margin:0 auto var(--s-5);opacity:.85}
+.brusnika-logo{width:auto;height:32px;margin:0 auto var(--s-3);opacity:.95}
+.brusnika-logo svg{height:100%;width:auto;display:block}
+.footer-meta{font-family:var(--ff-serif);font-style:italic;font-size:14px;line-height:1.6;color:rgba(243,237,226,.7);max-width:56ch}
+.footer-meta p{margin:0 0 8px}
+.footer-address{font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:.32em;text-transform:uppercase;color:rgba(243,237,226,.45);margin-top:var(--s-4);font-variant-numeric:tabular-nums}
+.footer-copy{font-family:var(--ff-mono);font-size:11px;font-weight:var(--fw-med);letter-spacing:.32em;text-transform:uppercase;color:rgba(243,237,226,.4);margin-top:var(--s-4);font-variant-numeric:tabular-nums}
+.footer a{color:rgba(243,237,226,.78);text-decoration:underline;text-decoration-color:rgba(200,152,112,.4);text-underline-offset:3px}
+.footer a:hover{color:#f3ede2;text-decoration-color:var(--c-accent-warm)}
+
+[data-rv]{opacity:0;transform:translate3d(0,18px,0);transition:opacity 1.2s var(--ease-cinema),transform 1.2s var(--ease-cinema);will-change:transform,opacity}
+[data-rv].is-in{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}[data-d="5"]{transition-delay:.5s}
+
+@supports(animation-timeline:view()){
+  .fig.parallax img{transform:scale(1.1) translateY(-3%);animation:parallaxShrink linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  @keyframes parallaxShrink{from{transform:scale(1.1) translateY(-3%)}to{transform:scale(1.0) translateY(3%)}}
+}
+
+.placeholder{background:var(--c-bg-2);display:flex;align-items:center;justify-content:center;padding:40px;text-align:center}
+.placeholder-label{font-family:var(--ff-serif);font-style:italic;font-size:13px;color:var(--c-ink-50);max-width:36ch;line-height:1.55}
+
+.preloader{position:fixed;inset:0;z-index:10000;background:#000;display:flex;align-items:center;justify-content:center}
+.preloader.is-gone{opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility 0s linear .6s}
+.preloader::after{content:"";display:block;width:32px;height:1px;background:var(--c-accent-warm);transform:scaleX(0);transform-origin:left center;animation:preloaderLine .6s var(--ease) forwards}
+@keyframes preloaderLine{to{transform:scaleX(1)}}
+
+@media(max-width:1024px){.scene{padding:clamp(88px,14vh,180px) 0}}
+@media(max-width:640px){
+  .hero-title{font-size:clamp(64px,22vw,108px)}
+  .scene{padding:clamp(72px,12vh,140px) 0}
+  .ly-fullbleed .fig{height:80vh}
+  .scene-time{margin-bottom:var(--s-4);font-size:10.5px}
+  .interlude-text{font-size:clamp(34px,9vw,56px)}
+  .phone-xl{font-size:clamp(40px,10vw,72px)}
+  .act-numeral{font-size:clamp(72px,18vw,128px)}
+}
+@media(max-width:375px){.wrap,.wrap-narrow{padding:0 var(--s-2)}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+  [data-rv]{opacity:1 !important;transform:none !important}
+  .hero-bg{transform:none !important;animation:none !important}
+  .fig img{transform:none !important}
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   V4.2 OVERRIDES — финал с фоновой башней, eyebrow visible,
+   refactored noise, A11Y utilities, кнопка-min-width
+   ═══════════════════════════════════════════════════════════════ */
+
+/* sr-only — для скрытых, но читаемых screen reader’ом меток */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ─── FINALE — вечерний фасад как фон ─── */
+.finale{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.46) 40%,rgba(0,0,0,.82) 100%),
+    url('image/fasad_bashni_vecher_krupno.png') center 45%/cover no-repeat;
+}
+.finale::before{
+  background:radial-gradient(ellipse at 70% 20%,rgba(200,152,112,.14) 0%,transparent 55%),
+             radial-gradient(ellipse at 20% 80%,rgba(91,110,133,.1) 0%,transparent 50%);
+}
+
+/* wordmark — фраза, не аббревиатура */
+.finale-wordmark{
+  font-size:clamp(40px,6vw,84px);
+  letter-spacing:-.018em;
+  line-height:1.04;
+  max-width:18ch;
+  margin:0 auto;
+  text-wrap:balance;
+}
+.finale-wordmark .letter{transform:translateY(.45em)}
+.finale-wordmark.is-in .letter{transform:translateY(0)}
+.finale-dot{color:var(--c-accent-warm);font-style:italic}
+.finale-grid{padding:clamp(40px,8vh,120px) 0 clamp(40px,8vh,80px)}
+.finale-time-col{text-align:center}
+.finale-text{grid-column:3/span 8;text-align:left}
+.finale-text .scene-title{margin-left:auto;margin-right:auto}
+@media(max-width:820px){.finale-text{grid-column:1/-1}.finale-text .scene-title{margin:0 0 var(--s-5)}}
+
+/* ─── Conv-блок: упрощение под "приходите в офис" ─── */
+.conv-head h2,.conv-head p{text-align:center}      /* убирает дубли, единое выравнивание */
+.conv .conv-head{max-width:30ch}
+.conv .form-wrap{margin-top:clamp(48px,7vh,80px);max-width:560px;margin-left:auto;margin-right:auto}
+.conv .form-wrap form{display:flex;flex-direction:column;gap:var(--s-2)}
+.conv .form-wrap .fg{margin-bottom:0;display:grid;grid-template-columns:1fr auto;gap:var(--s-1);align-items:stretch}
+.conv .form-wrap .fg input{padding:18px 20px;border:1px solid var(--c-hair);background:var(--c-paper);font-family:var(--ff-mono);font-size:16px;letter-spacing:0;border-radius:0;height:auto;min-height:56px}
+.conv .form-wrap .fg input:focus{border-color:var(--c-accent-warm);background:#fff}
+.conv .form-wrap .btn-submit{margin-top:0;padding:0 32px;font-size:11px;height:auto;min-height:56px;align-self:stretch;white-space:nowrap;min-width:200px}
+.conv .form-wrap .form-note{text-align:center;margin-top:var(--s-3)}
+.conv .or-sep{text-align:center;margin-bottom:var(--s-3);position:relative;display:flex;align-items:center;gap:var(--s-3);justify-content:center}
+.conv .or-sep::before,.conv .or-sep::after{content:"";flex:1;max-width:80px;height:1px;background:var(--c-hair)}
+@media(max-width:640px){
+  .conv .form-wrap .fg{grid-template-columns:1fr}
+  .conv .form-wrap .btn-submit{padding:18px 28px;width:100%;min-width:0}
+}
+
+</style>
+</head>
+<body>
+
+<!-- preloader — 0.4s, показывается только на первом визите сессии -->
+<div class="preloader" id="preloader" aria-hidden="true"></div>
+
+<!-- scroll progress bar — тонкая bronze-полоска сверху -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="site-header on-dark" id="siteHeader">
+  <div class="wrap">
+    <div class="header-in">
+      <a href="#top" class="brand" aria-label="Брусника · МОНС">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 1117 330" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M949.435 198.734C931.276 198.734 917.176 184.246 917.176 165C917.176 145.754 931.295 131.266 949.435 131.266C967.574 131.266 981.887 145.754 981.887 165C981.887 184.246 967.768 198.734 949.435 198.734ZM946.308 221.456C959.689 221.456 971.244 217.242 978.566 209.726H981.324V220H1006.63V110H981.324V120.274H978.566C971.225 112.758 959.689 108.543 946.308 108.543C915.331 108.543 891.114 133.48 891.114 165.019C891.114 196.559 915.312 221.495 946.308 221.495V221.456ZM791.523 220H816.829V176.555H840.852L863.594 220H891.463L862.681 165L891.463 110H864.332L841.59 153.444H816.848V110H791.543V220H791.523ZM670.259 220H694.632L740.835 152.532H743.592V220H768.335V110H744.136L697.934 177.468H695.176V110H670.24V220H670.259ZM549.908 220H575.019V176.555H621.959V220H647.07V110H621.959V153.444H575.019V110H549.908V220ZM346.435 220H373.566L425.633 110H398.308L373.372 163.174H370.614L343.677 110H315.264L358.534 194.889L346.435 220ZM243.854 155.27V132.897H273.373C281.802 132.897 285.842 136.568 285.842 144.084C285.842 151.599 281.802 155.27 273.373 155.27H243.854ZM218.742 220H243.854V178.187H274.849C296.853 178.187 310.603 164.98 310.603 144.084C310.603 123.187 296.659 110 274.849 110H218.742V220ZM135.601 197.083V174.71H165.296C173.55 174.71 177.589 178.381 177.589 185.897C177.589 193.413 173.55 197.083 165.296 197.083H135.601ZM110.49 220H166.772C188.407 220 202.332 206.794 202.332 185.897C202.332 165 188.582 151.794 166.772 151.794H135.601V132.917H195.748V110H110.49V220ZM480.517 221.456C508.93 221.456 531.477 201.647 533.866 174.516H508.93C505.997 189.004 494.636 198.715 480.517 198.715C462.921 198.715 449.346 184.227 449.346 164.98C449.346 145.734 462.921 131.246 480.517 131.246C494.636 131.246 505.997 140.957 508.93 155.445H533.866C531.497 128.333 508.949 108.524 480.517 108.524C448.433 108.524 423.322 133.46 423.322 165C423.322 196.539 448.433 221.476 480.517 221.476V221.456Z"/>
+          </svg>
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-name">МОНС</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#day">День</a>
+        <a href="#conv">Офис продаж</a>
+      </nav>
+      <a href="tel:+74950233345" class="header-phone">+7 495 023 33 45</a>
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MOBILE NAV (slide-in)
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <nav class="mobile-nav-list">
+    <a href="#day" class="mobile-nav-item">День</a>
+    <a href="#conv" class="mobile-nav-item">Офис продаж</a>
+  </nav>
+  <a href="tel:+74950233345" class="mobile-nav-phone">+7 495 023 33 45</a>
+</div>
+<div class="mobile-nav-scrim" id="mobileNavScrim" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MOBILE CTA (sticky bottom, appears after 40% scroll)
+     ═══════════════════════════════════════════════════════════════ -->
+<a href="#conv" class="mobile-cta" id="mobileCta" aria-hidden="true">
+  <span>В офис продаж</span>
+  <span aria-hidden="true">↗</span>
+</a>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-corner" data-rv="rise" data-d="3">
+    <strong>Бутырский, Москва</strong><br>
+    Огородный проезд, 20<br>
+    сдача III кв. 2027
+  </div>
+  <div class="wrap hero-in">
+    <p class="eyebrow hero-eyebrow" data-rv="rise">Один будний день в МОНСе</p>
+    <h1 class="hero-title" data-rv="rise" data-d="1">МОНС<span class="amp">.</span></h1>
+    <p class="hero-sub" data-rv="rise" data-d="2">Как будет устроен ваш день, когда вы здесь поселитесь.</p>
+    <div class="hero-meta" data-rv="rise" data-d="3">
+      <span>11 сцен</span>
+      <span aria-hidden="true">·</span>
+      <span>с 07:15 до 23:15</span>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-label="Прокрутите вниз" data-rv="rise" data-d="4"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROLOGUE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="prologue">
+  <div class="wrap">
+    <p class="eyebrow" data-rv="rise"><span class="dot">●</span>Пролог</p>
+    <div class="prologue-inner">
+      <p class="prologue-lead" data-rv="rise" data-d="1">
+        В МОНСе пока никто не живёт.
+      </p>
+      <p class="prologue-sub" data-rv="rise" data-d="2">
+        Дом сдадим в&nbsp;третьем квартале 2027-го. Ключи&nbsp;— в&nbsp;начале 2028-го.
+      </p>
+      <span class="prologue-hair" aria-hidden="true" data-rv="rise" data-d="2"></span>
+      <p class="prologue-bridge" data-rv="rise" data-d="3">
+        Но мы&nbsp;<strong>продумали каждый этаж</strong>&nbsp;— от&nbsp;лифтового холла до&nbsp;окна в&nbsp;ванной. Ниже&nbsp;— как будет устроен ваш день, когда вы здесь поселитесь.
+      </p>
+      <p class="prologue-cta" data-rv="rise" data-d="4">
+        Посмотрите, как будет ваш день.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DAY OPENER
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="day-opener" id="day">
+  <div class="wrap">
+    <h2 data-rv="rise">Один будний<br>день.</h2>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ACT I — УТРО
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="act" id="act-1">
+  <div class="act-head">
+    <div class="wrap">
+      <div class="act-head-in">
+        <h2 class="act-numeral" aria-hidden="true">I</h2>
+        <div class="act-timerange" data-rv="rise">07:15 — 10:00</div>
+        <span class="act-word" data-rv="rise" data-d="1">Утро</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07:15 — SPLIT: текст слева + sticky фото справа -->
+  <article class="scene ly-split" id="s-0715">
+    <div class="ly-split-grid">
+      <div class="left">
+        <div class="scene-time" data-rv="rise">07:15</div>
+        <h3 class="scene-title" data-rv="rise" data-d="1">Окно.<br>Снова окно.<br><em>И ещё одно окно.</em></h3>
+        <div class="scene-body">
+          <p class="lead drop-cap" data-rv="rise" data-d="2">Открываете глаза. Окно — в пол. Какая бы ни была погода, первое, что вы видите, — небо.</p>
+          <p data-rv="rise" data-d="2">Идёте в ванную. У ванной тоже окно. Чистите зубы и смотрите на город — и в первые дни после переезда ловите себя на этом как на странности: ванная, утренний ритуал, и вдруг — вид. Через месяц это станет нормой. Через год вы не сможете снять квартиру без окна в ванной.</p>
+          <p data-rv="rise" data-d="3">Если у вас двухуровневая — спускаетесь на кухню по собственной лестнице. Да, у вас собственная лестница. В собственной квартире. Витраж в два этажа — город встаёт вам навстречу в полный рост. С этим ощущением ещё предстоит свыкнуться.</p>
+          <p data-rv="rise" data-d="3">Кофе делаете на своей кухне — какой вы её сделали. White box: ровные стены, выведенная инженерия, чистый воздух для вашей мысли о том, как тут жить.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="fig parallax" data-rv="rise">
+          <img src="image/interior_dvuhurovnevaya_lestnitsa.png" alt="Двухуровневая квартира — собственная лестница, витраж в два этажа" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 08:20 — FULLBLEED: площадка во всю ширину + текст в 2 колонки -->
+  <article class="scene ly-fullbleed" id="s-0820">
+    <div class="fig parallax" data-rv="rise">
+      <img src="image/playground_derev_domiki_dvor.png" alt="Детская площадка во дворе МОНСа" loading="lazy" decoding="async">
+    </div>
+    <div class="wrap below">
+      <div class="inner">
+        <div class="left-col">
+          <div class="scene-time" data-rv="rise">08:20</div>
+          <h3 class="scene-title" data-rv="rise" data-d="1">Школа во дворе.<br><em>Самокат тоже.</em></h3>
+        </div>
+        <div class="scene-body">
+          <p class="lead" data-rv="rise" data-d="1">Способ, которым в Москве обычно отводят ребёнка в школу: переходи здесь, не здесь, не смотри туда, держи руку, осторожно машина. В МОНСе школа внутри квартала. Перехода нет. Машин во дворе нет. Инструкция сворачивается до одной фразы: «Не отставай».</p>
+          <p data-rv="rise" data-d="2">Двор без самокатчиков, которые носятся на 25 км/ч мимо детских площадок, — только детские самокаты. Ваш ребёнок сам отталкивается, сам рулит, сам тормозит.</p>
+          <p data-rv="rise" data-d="2">По дороге дети тормозят у площадки.</p>
+          <div class="dialog" data-rv="rise" data-d="3">
+            <span>— Пап, ну пожаааалуйста.</span>
+            <span class="parent">— Мы опаздываем.</span>
+            <span>— Ну пять минут.</span>
+            <span class="parent">— Нет.</span>
+            <span>— Ну однажды!</span>
+          </div>
+          <p data-rv="rise" data-d="3">Вы проигрываете этот диалог каждое утро. И это, пожалуй, лучшее проигранное утро из возможных.</p>
+          <p data-rv="rise" data-d="3">Скатятся с горки два раза. Игровые модули в МОНСе разработаны вместе с детскими психологами — из натуральных материалов, минимум пластика, абстрактных форм. Дети это чувствуют сразу. Вы — каждое утро по две минуты опоздания.</p>
+          <div class="callout" data-rv="rise" data-d="4">
+            <strong>Учебно-образовательный центр на 460 человек</strong>
+            <span>Школа и детский сад — внутри квартала. Спортивный парк со стадионом. Зимой на бульваре — каток, главная ёлка, трасса для бубликов.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INTERLUDE — пауза между актами
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="wrap-narrow">
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise"></span>
+    <p class="interlude-text" data-rv="rise" data-d="1">
+      Двести метров <em>от подъезда до калитки.</em> <strong>Машина не нужна.</strong>
+    </p>
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise" data-d="2"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ACT II — ДЕНЬ
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="act" id="act-2">
+  <div class="act-head">
+    <div class="wrap">
+      <div class="act-head-in">
+        <h2 class="act-numeral" aria-hidden="true">II</h2>
+        <div class="act-timerange" data-rv="rise">10:00 — 14:30</div>
+        <span class="act-word" data-rv="rise" data-d="1">День</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10:00 — ASYM: огромное время + картинка 5/7 + текст -->
+  <article class="scene ly-asym" id="s-1000">
+    <div class="wrap">
+      <div class="grid-12">
+        <div class="time-col">
+          <span class="time-xl" data-rv="rise">10:00</span>
+        </div>
+        <div class="media-col">
+          <div class="fig parallax" data-rv="rise" data-d="1">
+            <img src="image/screenshot_lobbi_interyer_s_tekstom.png" alt="Лобби МОНСа: общественная гостиная — диваны, кофемашина, оливковое дерево, человек с ноутбуком" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="text-col">
+          <h3 class="scene-title tight" data-rv="rise" data-d="1">Работаю<br>в лобби.</h3>
+          <div class="scene-body">
+            <p class="lead" data-rv="rise" data-d="2">В каждом доме МОНСа на первом этаже — лобби. Не «входная группа», а полноценная общественная гостиная: диваны, торшеры с тёплым светом, живые растения, скульптуры, столы.</p>
+            <p data-rv="rise" data-d="3">Вы спускаетесь сюда работать с ноутом. Иногда проводите здесь зум. Иногда — встречу с партнёром: вместо того чтобы тащиться в коворкинг через полгорода, вы говорите «зайдите в лобби моего дома, я внизу». Они приходят — и видно, что им понравилось. Вы стараетесь выглядеть так, будто у вас это каждый день. Выдаёт только кофе, который вы варите им сами — в общественной кофемашине, стоящей в лобби, как в приличной гостинице.</p>
+            <p data-rv="rise" data-d="3">Лифт KOYO — 1,6 на 2 метра, высотой 2,8. Не «бесшумный» в маркетинговом смысле, а просто большой и тихий: помещаются компания, мебель и собственное достоинство.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 12:45 — PULLQUOTE: огромная цитата + мелкие фото снизу -->
+  <article class="scene ly-quote" id="s-1245">
+    <div class="wrap">
+      <div class="quote-hero">
+        <span class="q-time" data-rv="rise">12:45 · Парк на высоте</span>
+        <p class="q-text" data-rv="rise" data-d="1">Первый в России аналог нью-йоркского <em>High Line.</em></p>
+        <p class="q-source" data-rv="rise" data-d="3">40&nbsp;000&nbsp;м² парка на&nbsp;высоте шести&nbsp;метров&nbsp;— свяжет пять районов, от&nbsp;парка «Яуза» до&nbsp;ВДНХ. 4&nbsp;км беговой трассы, закрытой от&nbsp;самокатов.</p>
+      </div>
+      <div class="quote-media">
+        <div class="fig a parallax" data-rv="rise">
+          <img src="image/park_prud_lezaki_derevya.png" alt="Парк — зона отдыха: пруд, шезлонги, сосны" loading="lazy" decoding="async">
+        </div>
+        <div class="fig b parallax" data-rv="rise" data-d="1">
+          <img src="image/genplan_aerorender_kvartal_tramvay.png" alt="Аэрорендер квартала и трамвайной линии" loading="lazy" decoding="async">
+        </div>
+        <div class="quote-text scene-body">
+          <p class="lead" data-rv="rise">Спускаетесь, заходите в булочную на первом этаже квартала. У прилавка — свежая чиабатта, салями, пармезан, пара листьев рукколы. Говорите: «Вот так, так и так». Вам режут, собирают, заворачивают. Берёте кофе навынос.</p>
+          <p data-rv="rise" data-d="1">Парк на высоте — это первый в России аналог нью-йоркского High Line, «Небесного сада» в Сеуле и «Гудс-Лайн» в Сиднее. На уровне шести метров — круглосуточное пространство для прогулок, бега и отдыха. Закрыто от самокатов и велосипедов: значит, бегать по нему действительно можно.</p>
+          <p data-rv="rise" data-d="1">Сорок тысяч квадратных метров. Свяжет пять районов — от парка «Яуза» до Ботанического сада и ВДНХ. Беговая трасса — четыре километра. Бывшие станции монорельса станут павильонами.</p>
+          <p data-rv="rise" data-d="2">Доходите до скамейки. Разворачиваете свёрток. С этой высоты на свой дом смотришь сверху вниз и узнаёшь своё окно — оно открыто. Это не страшно: двор МОНСа закрыт от посторонних.</p>
+          <div class="callout" data-rv="rise" data-d="2">
+            <strong>40 000 м² · 4 км беговой трассы</strong>
+            <span>Аналог High Line в Москве. Виды на Останкинскую башню и «Солнце Москвы». Закрыт от самокатов — значит, действительно для прогулок и спорта.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 14:00 — VOID: одна фраза в пустом поле -->
+  <article class="scene ly-void" id="s-1400">
+    <div class="wrap-narrow">
+      <span class="void-time" data-rv="rise">14:00 · По пути обратно</span>
+      <p class="void-text" data-rv="rise" data-d="1">
+        На обратном пути здороваетесь с двумя людьми. Одного знаете <em>по имени</em>, второго — <em>по собаке</em>.
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INTERLUDE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="wrap-narrow">
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise"></span>
+    <p class="interlude-text" data-rv="rise" data-d="1">
+      <em>Шесть гектаров —</em> <strong>город, который умещается в один день.</strong>
+    </p>
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise" data-d="2"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ACT III — ВЕЧЕР
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="act" id="act-3">
+  <div class="act-head">
+    <div class="wrap">
+      <div class="act-head-in">
+        <h2 class="act-numeral" aria-hidden="true">III</h2>
+        <div class="act-timerange" data-rv="rise">14:30 — 21:30</div>
+        <span class="act-word" data-rv="rise" data-d="1">Вечер</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14:30 — TRIPTYCH: текст слева sticky + 2 фото справа -->
+  <article class="scene ly-trip" id="s-1430">
+    <div class="wrap">
+      <div class="trip-grid">
+        <div class="trip-text">
+          <div class="scene-time" data-rv="rise">14:30</div>
+          <h3 class="scene-title" data-rv="rise" data-d="1">Город <em>в миниатюре.</em></h3>
+          <div class="scene-body">
+            <p data-rv="rise" data-d="2">Возвращаетесь и по дороге решаете три бытовых вопроса.</p>
+            <p data-rv="rise" data-d="3">В квартале — три коммерческих кластера. Это значит: всё рядом и не надо никуда ехать.</p>
+          </div>
+        </div>
+        <div class="fig trip-media-a parallax" data-rv="rise">
+          <img src="image/kommertsiya_strit_riteyl_tsvety.png" alt="Стрит-ритейл первого этажа с цветами и соснами" loading="lazy" decoding="async">
+        </div>
+        <div class="fig trip-media-b parallax" data-rv="rise" data-d="1">
+          <img src="image/kommertsiya_kafe_terassa_dvor.png" alt="Кафе с террасой во дворе" loading="lazy" decoding="async">
+        </div>
+        <div class="fig trip-media-c parallax" data-rv="rise" data-d="2">
+          <img src="image/fasad_pervye_etazhi_vitrina.png" alt="Первые этажи — витрины коммерции" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="wrap-narrow" style="margin-top:clamp(50px,8vh,100px);padding:0">
+        <div class="scene-body" style="max-width:var(--measure);margin-left:calc(4/12*100%)">
+          <p data-rv="rise">В трёхэтажном торговом центре вдоль Огородного проезда — супермаркет, фитнес-центр, товары для дома, фудкорт, автомойка. На променадных улицах — кофейня, мини-маркет, медицинский центр, детский развлекательный комплекс, консьерж-служба.</p>
+          <p data-rv="rise" data-d="1">Привычная логистика «магазин — химчистка — забрать посылку — заехать на мойку» сжимается до прогулки. Это не «инфраструктура шаговой доступности», это просто город, который умещается в шесть гектаров.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 15:45 — STACKED: гигантское время слева + фото 2/3 -->
+  <article class="scene ly-stack" id="s-1545">
+    <div class="wrap">
+      <div class="stack-grid">
+        <div class="stack-time" data-rv="rise">15<br>:45</div>
+        <div class="fig stack-media parallax" data-rv="rise" data-d="1">
+          <img src="image/dvor_blagoustr_derevya_skameyki.png" alt="Внутренний двор — деревья, кусты, скамейки, кафе-терраса" loading="lazy" decoding="async">
+        </div>
+        <div class="stack-text">
+          <h3 class="scene-title" data-rv="rise" data-d="1">Забираю<br>детей.</h3>
+          <div class="scene-body">
+            <p class="lead" data-rv="rise" data-d="2">Школа в шаге. Идёте за пятнадцать минут до окончания — потому что можете. Пробок нет, машина не нужна, ребёнок уже видит, что вы стоите за воротами.</p>
+            <p data-rv="rise" data-d="3">На обратном пути — снова попытка горки. На этот раз вы соглашаетесь. Двадцать минут на площадке. Залипаете в телефон, но не до конца — двор просматривается с любой точки, без тёмных углов. Это видно сразу: глазами не ищете своих, потому что они в поле зрения по умолчанию.</p>
+            <p data-rv="rise" data-d="3">Двор спроектирован как пэчворк: разные зоны — игры, отдых, спорт, тихие уголки. Камерные сады со взрослыми деревьями, многолетниками, злаковыми. Растения подобраны по календарю цветения — что-то цветёт каждый месяц до октября.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 17:00 — DIPTYCH: 2 фото большие + время крупно + текст -->
+  <article class="scene ly-dip" id="s-1700">
+    <div class="wrap">
+      <div class="dip-grid">
+        <div class="fig dip-a parallax" data-rv="rise">
+          <img src="image/parking_navigatsiya_liftovy_hol.png" alt="Лифтовой холл паркинга: навигация, чистый светлый пол" loading="lazy" decoding="async">
+        </div>
+        <div class="fig dip-b parallax" data-rv="rise" data-d="1">
+          <img src="image/parking_lift_zona_zelen.png" alt="Лифтовой узел паркинга с зелёными растениями" loading="lazy" decoding="async">
+        </div>
+        <div class="dip-text scene-body">
+          <h3 class="scene-title" data-rv="rise">Экскурсию начинают<br><em>с паркинга.</em></h3>
+          <p class="lead" data-rv="rise" data-d="1">Это, конечно, шутка. Но не до конца.</p>
+          <p data-rv="rise" data-d="2">Подземный паркинг в МОНСе — пространство, в котором не неловко находиться. Нормальный свет, чистый воздух, живые растения. Не пластиковый газон в углу — настоящие.</p>
+          <p data-rv="rise" data-d="2">Так получилось не для эффекта. Просто вы спускаетесь сюда каждый день, иногда несколько раз — и нет причины, по которой это место должно выглядеть как туннель в гараж.</p>
+          <p data-rv="rise" data-d="3">Поэтому когда придут друзья, вы спокойно начнёте показ квартала отсюда. Они решат, что вы шутите. А вы — нет. И через десять минут, уже в квартире, кто-то из них тихо спросит: «А у вас тут… все паркинги такие?» Вам будет приятно ответить: «Нет. Только здесь».</p>
+        </div>
+        <div class="dip-time">
+          <span class="time-lg" data-rv="rise">17:00</span>
+          <span class="time-lbl" data-rv="rise" data-d="2">Паркинг</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 19:00 — FULLBLEED с оверлеем снизу: терраса -->
+  <article class="scene ly-fullbleed" id="s-1900">
+    <div class="fig parallax" data-rv="rise">
+      <img src="image/terrasa_pergola_pufiki_velosiped.png" alt="Приватный сад на крыше — пергола, пуфы, велосипед, вечерний свет" loading="lazy" decoding="async">
+    </div>
+    <div class="wrap below">
+      <div class="inner">
+        <div class="left-col">
+          <div class="scene-time" data-rv="rise">19:00</div>
+          <h3 class="scene-title" data-rv="rise" data-d="1">Йога на крыше<br><em>торгового центра.</em></h3>
+        </div>
+        <div class="scene-body">
+          <p class="lead" data-rv="rise" data-d="1">Звучит как название клипа двухтысячных, но это просто адрес.</p>
+          <p data-rv="rise" data-d="2">На крыше торгово-развлекательного центра — приватный двор-сад для жителей первой очереди. Сосны, канадская ирга, сирень. Водный объект. Площадка для фитнеса и йоги. Зимой управляющая компания ставит ёлку и украшает перголы.</p>
+          <p data-rv="rise" data-d="3">Иногда после работы вы поднимаетесь сюда на занятие. Иногда — просто посидеть у воды двадцать минут перед ужином. Это не «сад на крыше» из инстаграма. Это нормальное место с живыми растениями, в которое не нужно ехать.</p>
+          <div class="callout" data-rv="rise" data-d="4">
+            <strong>Приватный двор-сад на крыше ТРЦ</strong>
+            <span>Только для жителей первой очереди. Сосны, ирга, сирень, водный объект. Йога летом, ёлка зимой, лежаки между сезонами.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INTERLUDE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="interlude">
+  <div class="wrap-narrow">
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise"></span>
+    <p class="interlude-text" data-rv="rise" data-d="1">
+      <em>Московских окон —</em> <strong>негасимый свет.</strong>
+    </p>
+    <span class="interlude-rule" aria-hidden="true" data-rv="rise" data-d="2"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ACT IV — НОЧЬ
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="act" id="act-4">
+  <div class="act-head">
+    <div class="wrap">
+      <div class="act-head-in">
+        <h2 class="act-numeral" aria-hidden="true">IV</h2>
+        <div class="act-timerange" data-rv="rise">21:30 — 23:15</div>
+        <span class="act-word" data-rv="rise" data-d="1">Ночь</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21:30 — SPLIT reverse: фото слева sticky + текст справа -->
+  <article class="scene ly-split reverse" id="s-2130">
+    <div class="ly-split-grid">
+      <div class="left">
+        <div class="scene-time" data-rv="rise">21:30</div>
+        <h3 class="scene-title" data-rv="rise" data-d="1">Постирочная.<br><em>И кабинет.</em></h3>
+        <div class="scene-body">
+          <p class="lead drop-cap" data-rv="rise" data-d="2">Дети спят. У вас есть отдельная комната для стирки. И ещё одна — чтобы закрыть в ней дверь, и никто не зашёл. Кабинет. У вас есть кабинет.</p>
+          <p data-rv="rise" data-d="2">В постирочной — стиральная, сушка, гладильная доска, полки для всего, что обычно валяется по квартире. Разница с обычным жильём простая: в МОНСе постирочная вынесена в план, а не воткнута в ванную над унитазом.</p>
+          <p data-rv="rise" data-d="3">Из постирочной — в кабинет. Закрываете дверь. Час работы без детей и фоновой кухни — это редкая для современного жилья валюта. У вас она есть.</p>
+          <p data-rv="rise" data-d="3">Если у вас мастер-спальня — это отдельная история. Собственная ванная при спальне работает так: вечером не нужно идти куда-то через коридор. Утром — никто не врывается, пока вы умываетесь. Это как номер в хорошем отеле, только у вас дома.</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="fig parallax" data-rv="rise">
+          <img src="image/interior_kabinet.png" alt="Домашний кабинет с диваном и рабочим столом" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- 23:15 — FINALE на тёмном -->
+  <article class="scene finale" id="s-2315">
+    <div class="wrap">
+      <div class="finale-grid">
+        <div class="finale-time-col">
+          <span class="finale-time" data-rv="rise">23:15</span>
+          <span class="finale-time-caption" data-rv="rise" data-d="2">Финальная сцена дня</span>
+        </div>
+        <div class="finale-text scene-body">
+          <h3 class="scene-title" data-rv="rise" data-d="1">Окна,<br>в которые <em>возвращаются.</em></h3>
+          <p class="lead" data-rv="rise" data-d="2">Перед сном вы подходите к окну. Не зашториваете. За окном — парк, башня и собственные корпуса МОНСа: десять зданий, ни одно не повторяет другое, у каждого свой поворот к городу.</p>
+          <p data-rv="rise" data-d="2">Никаких соседей напротив, в чьи окна неловко смотреть в ответ. У каждого вашего окна — своя сцена.</p>
+          <p data-rv="rise" data-d="3">Свет горит в чужих окнах. Там — люди вашего ритма: те, для кого вид из окна не бонус, а конструкция дома.</p>
+          <p data-rv="rise" data-d="3">Через год вы поймёте: дом — это не квадратные метры. Это вид, который не надоедает. И утро, к которому хочется проснуться.</p>
+        </div>
+      </div>
+      <div class="finale-bottom">
+        <span class="finale-wordmark" id="finaleMark" data-rv="rise">
+          <span class="letter">Это</span> <span class="letter">будет</span> <span class="letter">ваш</span> <span class="letter finale-dot">день.</span>
+        </span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CONVERSION
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="conv" id="conv">
+  <div class="wrap">
+
+    <div class="conv-head">
+      <span class="eyebrow" data-rv="rise"><span class="dot">●</span>Офис продаж</span>
+      <h2 data-rv="rise" data-d="1">Приходите в офис —<br><em>выберем окно.</em></h2>
+      <p data-rv="rise" data-d="2">Дом сдадим в третьем квартале 2027-го. До тех пор у нас в офисе — масштабный макет квартала, образцы отделки и человек, который ответит на любой вопрос. Встречи — по записи, один на один.</p>
+    </div>
+
+    <a href="tel:+74950233345" class="phone-xl" data-rv="rise">+7 495 023 33 45</a>
+    <p class="phone-note" data-rv="rise" data-d="2">Звонок — самый быстрый путь</p>
+
+    <div class="form-wrap" data-rv="rise">
+      <div class="or-sep">или оставьте номер</div>
+      <form action="https://formspree.io/f/PLACEHOLDER" method="POST">
+        <div class="fg">
+          <label for="contact" class="sr-only">Ваш телефон</label>
+          <input type="tel" id="contact" name="contact" autocomplete="tel" placeholder="+7 ___ ___ __ __" inputmode="tel" required>
+          <button type="submit" class="btn-submit">Перезвоните мне</button>
+        </div>
+        <p class="form-note">Перезвоним в течение часа в рабочее время</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-in">
+      <span class="footer-rule" aria-hidden="true"></span>
+      <div class="brusnika-logo">
+        <svg viewBox="0 0 1117 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M949.435 198.734C931.276 198.734 917.176 184.246 917.176 165C917.176 145.754 931.295 131.266 949.435 131.266C967.574 131.266 981.887 145.754 981.887 165C981.887 184.246 967.768 198.734 949.435 198.734ZM946.308 221.456C959.689 221.456 971.244 217.242 978.566 209.726H981.324V220H1006.63V110H981.324V120.274H978.566C971.225 112.758 959.689 108.543 946.308 108.543C915.331 108.543 891.114 133.48 891.114 165.019C891.114 196.559 915.312 221.495 946.308 221.495V221.456ZM791.523 220H816.829V176.555H840.852L863.594 220H891.463L862.681 165L891.463 110H864.332L841.59 153.444H816.848V110H791.543V220H791.523ZM670.259 220H694.632L740.835 152.532H743.592V220H768.335V110H744.136L697.934 177.468H695.176V110H670.24V220H670.259ZM549.908 220H575.019V176.555H621.959V220H647.07V110H621.959V153.444H575.019V110H549.908V220ZM346.435 220H373.566L425.633 110H398.308L373.372 163.174H370.614L343.677 110H315.264L358.534 194.889L346.435 220ZM243.854 155.27V132.897H273.373C281.802 132.897 285.842 136.568 285.842 144.084C285.842 151.599 281.802 155.27 273.373 155.27H243.854ZM218.742 220H243.854V178.187H274.849C296.853 178.187 310.603 164.98 310.603 144.084C310.603 123.187 296.659 110 274.849 110H218.742V220ZM135.601 197.083V174.71H165.296C173.55 174.71 177.589 178.381 177.589 185.897C177.589 193.413 173.55 197.083 165.296 197.083H135.601ZM110.49 220H166.772C188.407 220 202.332 206.794 202.332 185.897C202.332 165 188.582 151.794 166.772 151.794H135.601V132.917H195.748V110H110.49V220ZM480.517 221.456C508.93 221.456 531.477 201.647 533.866 174.516H508.93C505.997 189.004 494.636 198.715 480.517 198.715C462.921 198.715 449.346 184.227 449.346 164.98C449.346 145.734 462.921 131.246 480.517 131.246C494.636 131.246 505.997 140.957 508.93 155.445H533.866C531.497 128.333 508.949 108.524 480.517 108.524C448.433 108.524 423.322 133.46 423.322 165C423.322 196.539 448.433 221.476 480.517 221.476V221.456Z" fill="#ffffff" opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="footer-meta">
+        <p>Застройщик: ООО «Брусника. Москва». Проектная декларация на <a href="https://наш.дом.рф">наш.дом.рф</a>.</p>
+        <p>Изображения — архитектурные визуализации. Цены и площади указаны ориентировочно, уточняйте актуальные значения у отдела продаж.</p>
+      </div>
+      <div class="footer-address">Огородный проезд, 20, Москва · +7 495 023 33 45</div>
+      <div class="footer-copy">© Брусника, 2026</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPTS — минимум JS, остальное сделано CSS
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+  const $  = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── 1. REVEAL ─────────────────────────────
+     один IntersectionObserver на всё, единый порог, rootMargin -6%.
+     добавляем `.is-in` и перестаём наблюдать.
+     Так короткие анимации не дёргаются под каждый re-flow. */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
+  $$('[data-rv]').forEach(el=>io.observe(el));
+
+  /* ── 2. fig.is-in — отдельный трекер для img scale ─── */
+  const figIO = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-in'); figIO.unobserve(e.target); }
+    });
+  },{threshold:0.2});
+  $$('.fig').forEach(el=>figIO.observe(el));
+
+  /* ── 3. Header smart-hide + scrolled state ─── */
+  const header = $('#siteHeader');
+  const hero   = $('.hero');
+  let lastY = 0, ticking = false;
+  function onScroll(){
+    const y = window.scrollY;
+    if(y > 40) header.classList.add('is-scrolled'); else header.classList.remove('is-scrolled');
+    if(y < window.innerHeight * 0.85) header.classList.add('on-dark'); else header.classList.remove('on-dark');
+    if(y > 260){
+      if(y > lastY + 6) header.classList.add('is-hidden');
+      else if(y < lastY - 6) header.classList.remove('is-hidden');
+    } else header.classList.remove('is-hidden');
+    lastY = y; ticking = false;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!ticking){ window.requestAnimationFrame(onScroll); ticking = true; }
+  },{passive:true});
+
+  /* ── 4. HERO parallax — quiet, editorial (v3) ─── */
+  const heroBg = $('#heroBg');
+  if(heroBg && !reduceMotion){
+    let pTick = false;
+    function parallax(){
+      const y = window.scrollY;
+      if(y < window.innerHeight * 1.3){
+        const v = y * 0.12;
+        heroBg.style.transform = `translate3d(0, ${v}px, 0) scale(1.04)`;
+      }
+      pTick = false;
+    }
+    window.addEventListener('scroll',()=>{
+      if(!pTick){ window.requestAnimationFrame(parallax); pTick = true; }
+    },{passive:true});
+  }
+
+  /* ── 4b. Scroll progress bar ─── */
+  const progress = $('#scrollProgress');
+  if(progress){
+    let gTick = false;
+    function updateProgress(){
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const p = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+      progress.style.setProperty('--p', p.toFixed(4));
+      gTick = false;
+    }
+    updateProgress();
+    window.addEventListener('scroll',()=>{
+      if(!gTick){ window.requestAnimationFrame(updateProgress); gTick = true; }
+    },{passive:true});
+    window.addEventListener('resize',updateProgress,{passive:true});
+  }
+
+  /* ── 5. Smooth anchor scroll ─── */
+  $$('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',(e)=>{
+      const href = a.getAttribute('href');
+      if(href.length < 2) return;
+      const t = document.querySelector(href);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'}); }
+    });
+  });
+
+  /* ── 5b. Burger + mobile-nav slide-in ─── */
+  const burger = $('#burgerBtn');
+  const mobileNav = $('#mobileNav');
+  const mobileNavScrim = $('#mobileNavScrim');
+  function closeMobileNav(){
+    if(!mobileNav) return;
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden','true');
+    mobileNavScrim.classList.remove('is-open');
+    mobileNavScrim.setAttribute('aria-hidden','true');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+    burger.setAttribute('aria-label','Открыть меню');
+    document.body.classList.remove('nav-open');
+  }
+  function openMobileNav(){
+    if(!mobileNav) return;
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden','false');
+    mobileNavScrim.classList.add('is-open');
+    mobileNavScrim.setAttribute('aria-hidden','false');
+    burger.classList.add('is-open');
+    burger.setAttribute('aria-expanded','true');
+    burger.setAttribute('aria-label','Закрыть меню');
+    document.body.classList.add('nav-open');
+  }
+  if(burger && mobileNav){
+    burger.addEventListener('click',()=>{
+      burger.classList.contains('is-open') ? closeMobileNav() : openMobileNav();
+    });
+    mobileNavScrim.addEventListener('click',closeMobileNav);
+    $$('.mobile-nav a').forEach(a=>a.addEventListener('click',closeMobileNav));
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeMobileNav(); });
+  }
+
+  /* ── 5c. Mobile CTA bar — появляется после 40% прокрутки ─── */
+  const mobileCta = $('#mobileCta');
+  if(mobileCta){
+    let cTick = false;
+    function onMobileCtaScroll(){
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const p = docH > 0 ? window.scrollY / docH : 0;
+      // не показываем, если mobile-nav открыт или мы в самом низу (видна форма)
+      const conv = document.getElementById('conv');
+      const inConv = conv && conv.getBoundingClientRect().top < window.innerHeight * 0.7;
+      if(p > 0.4 && !inConv && !document.body.classList.contains('nav-open')){
+        mobileCta.classList.add('is-visible');
+        mobileCta.setAttribute('aria-hidden','false');
+      } else {
+        mobileCta.classList.remove('is-visible');
+        mobileCta.setAttribute('aria-hidden','true');
+      }
+      cTick = false;
+    }
+    window.addEventListener('scroll',()=>{
+      if(!cTick){ window.requestAnimationFrame(onMobileCtaScroll); cTick = true; }
+    },{passive:true});
+  }
+
+  /* ── 5d. Pay-item accordion mutex — только один открыт ─── */
+  const payItems = $$('.pay-item');
+  payItems.forEach(item=>{
+    item.addEventListener('toggle',()=>{
+      if(item.open){
+        payItems.forEach(o=>{ if(o !== item) o.open = false; });
+      }
+    });
+  });
+
+  /* ── 5e. Preloader — 0.4s, только на первом визите сессии ─── */
+  const preloader = $('#preloader');
+  if(preloader){
+    const seen = (function(){ try { return sessionStorage.getItem('mons_seen'); } catch(e){ return null; } })();
+    if(seen){
+      // уже видели — сразу убираем без анимации
+      preloader.style.transition='none';
+      preloader.classList.add('is-gone');
+    } else {
+      // первый визит: ждём шрифты + 400мс и прячем
+      const done = ()=>{
+        preloader.classList.add('is-gone');
+        try { sessionStorage.setItem('mons_seen','1'); } catch(e){}
+      };
+      const minDelay = new Promise(r=>setTimeout(r,400));
+      const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      Promise.all([minDelay,fontsReady]).then(done);
+      // safety net
+      setTimeout(done, 2000);
+    }
+  }
+
+  /* ── 6. Image error → placeholder with spec ─── */
+  const specs = {
+    'interior_spalnya_okno_v_pol.png':'Спальня с панорамным окном в пол. Утренний свет, городской горизонт.',
+    'interior_vannaya_okno.png':'Ванная с окном. Минимализм, лёгкий утренний свет.',
+    'interior_dvuhurovnevaya_lestnitsa.png':'Гостиная двухуровневой квартиры. Лестница на 2-й этаж, витраж в два этажа.',
+    'interior_postirochnaya.png':'Постирочная: стиральная, сушка, полки, гладильная доска.',
+    'interior_kabinet.png':'Домашний кабинет: рабочий стол, кресло, книги, спокойный свет.',
+    'interior_vannaya_mastersuite.png':'Ванная при мастер-спальне — отдельный приватный санузел.',
+    'interior_garderobnaya.png':'Гардеробная со стеклянными шкафами.',
+    'park_na_vysote_pavilion.png':'Парк на высоте — павильон.',
+    'park_na_vysote_amfiteatr.png':'Парк на высоте — амфитеатр-лестница, трамвай у платформы.',
+    'park_prud_lezaki_derevya.png':'Парк — зона отдыха: пруд, шезлонги, сосны.',
+    'genplan_aerorender_kvartal_tramvay.png':'Аэрорендер: квартал и трамвайная линия вдоль парка.',
+    'fasad_pervye_etazhi_vitrina.png':'Первые этажи — витрины коммерции, деревья.'
+  };
+  $$('img').forEach(img=>{
+    img.addEventListener('error',()=>{
+      const file = img.src.split('/').pop();
+      const wrap = img.parentElement;
+      const text = specs[file] || 'Фото требуется';
+      wrap.innerHTML = `<div class="placeholder-label">Требуется фото: ${text}</div>`;
+      wrap.classList.add('placeholder');
+    },{once:true});
+  });
+
+})();
+</script>
+</body>
+</html>
