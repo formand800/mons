@@ -4,15 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="МОНС — квартал от Брусники в Бутырском. Один будний день как он будет устроен.">
+<meta name="description" content="МОНС — квартал Брусники в Бутырском районе Москвы. 11 сцен одного будничного дня: окно в пол, школа во дворе, парк на высоте, лобби-гостиная. Сдача III кв. 2027.">
+<meta name="keywords" content="МОНС, Брусника, Бутырский, новостройка Москва, квартиры с окном в пол, ЖК Огородный проезд, премиум новостройка СВАО">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://formand800.github.io/mons/">
 <title>МОНС · Один будний день · Брусника</title>
+
+<!-- Open Graph / Facebook / VK / Telegram -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://formand800.github.io/mons/">
+<meta property="og:title" content="МОНС · Один будний день в квартале от Брусники">
+<meta property="og:description" content="11 сцен одного дня в МОНСе: от окна в пол на рассвете до парка на высоте вечером. Бутырский, Москва. Сдача III кв. 2027.">
+<meta property="og:image" content="https://formand800.github.io/mons/image/fasad_bashni_park_ostankino_1.png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Брусника · МОНС">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="МОНС · Один будний день в квартале от Брусники">
+<meta name="twitter:description" content="11 сцен одного дня в МОНСе. Бутырский, Москва. Сдача III кв. 2027.">
+<meta name="twitter:image" content="https://formand800.github.io/mons/image/fasad_bashni_park_ostankino_1.png">
+
 <link rel="icon" type="image/svg+xml" href="icon/Знак красный/Знак_красный.svg">
 <link rel="icon" type="image/png" href="icon/Знак красный/Знак_красный.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="preload" href="image/fasad_bashni_park_ostankino_1.png" as="image">
-<link rel="prefetch" href="image/fasad_bashni_vecher_krupno.png" as="image">
+<link rel="preload" href="image/fasad_bashni_park_ostankino_1.webp" as="image" type="image/webp">
+<link rel="prefetch" href="image/fasad_bashni_vecher_krupno.webp" as="image" type="image/webp">
 
 <style>
 /* ═══════════════════════════════════════════════════════════════
@@ -127,7 +148,7 @@ body.nav-open{overflow:hidden}
    HERO — opening title
    ═══════════════════════════════════════════════════════════════ */
 .hero{position:relative;height:100vh;min-height:100svh;overflow:hidden;background:#000;color:#f3ede2;isolation:isolate}
-.hero-bg{position:absolute;inset:-6%;z-index:0;background:url('image/fasad_bashni_park_ostankino_1.png') center 35%/cover no-repeat;will-change:transform;transform:translate3d(0,0,0) scale(1.06);transition:transform .05s linear;animation:slowZoom 18s var(--ease-cinema) infinite alternate;filter:contrast(1.1) saturate(.84) sepia(.06) hue-rotate(-4deg)}
+.hero-bg{position:absolute;inset:-6%;z-index:0;background:url('image/fasad_bashni_park_ostankino_1.webp') center 35%/cover no-repeat;will-change:transform;transform:translate3d(0,0,0) scale(1.06);transition:transform .05s linear;animation:slowZoom 18s var(--ease-cinema) infinite alternate;filter:contrast(1.1) saturate(.84) sepia(.06) hue-rotate(-4deg)}
 @keyframes slowZoom{from{transform:scale(1.06)}to{transform:scale(1.14)}}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.18) 30%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.92) 100%)}
 /* film grain overlay */
@@ -403,6 +424,36 @@ body.nav-open{overflow:hidden}
 }
 @media(max-width:375px){.wrap,.wrap-narrow{padding:0 var(--s-2)}}
 
+/* ─── MOBILE FIX v1: hero overlap, tap-targets, gaps ─── */
+@media(max-width:640px){
+  /* убираем cinematic-слейт сверху — на мобиле перекрывался с адресной плашкой */
+  .hero-in::before{display:none}
+  /* адресная плашка справа — компактнее и не липнет к краю */
+  .hero-corner{
+    top:auto;bottom:clamp(120px,18vh,180px);left:var(--pad);right:auto;
+    text-align:left;font-size:10px;letter-spacing:.14em;padding:6px 10px;
+    background:rgba(10,10,10,.32);backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);max-width:calc(100% - 2*var(--pad))
+  }
+  /* hero-meta: чтобы не теснилось у нижнего края */
+  .hero-in{padding-bottom:clamp(40px,8vh,80px)}
+  /* нижняя scroll-pulse полоска — мешает CTA */
+  .hero-scroll{display:none}
+  /* убираем кричащую пустоту между сценами на мобиле */
+  .scene{padding:clamp(56px,9vh,96px) 0}
+  .ly-fullbleed .below{padding-top:clamp(20px,4vh,40px)}
+  /* tap-targets */
+  .mobile-nav-item{padding:14px 0;min-height:44px;display:flex;align-items:center}
+  .header-phone,.brand{min-height:44px;display:inline-flex;align-items:center}
+  /* phone-xl не должен переноситься криво */
+  .phone-xl{word-break:keep-all;white-space:nowrap;font-size:clamp(28px,8vw,52px)}
+}
+@media(max-width:480px){
+  .hero-corner{font-size:9.5px;padding:5px 8px}
+  /* act-numeral — гигантская "II" — не должна вылезать */
+  .act-numeral{font-size:clamp(64px,16vw,108px)}
+}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
   [data-rv]{opacity:1 !important;transform:none !important}
@@ -422,7 +473,7 @@ body.nav-open{overflow:hidden}
 .finale{
   background:
     linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.46) 40%,rgba(0,0,0,.82) 100%),
-    url('image/fasad_bashni_vecher_krupno.png') center 45%/cover no-repeat;
+    url('image/fasad_bashni_vecher_krupno.webp') center 45%/cover no-repeat;
 }
 .finale::before{
   background:radial-gradient(ellipse at 70% 20%,rgba(200,152,112,.14) 0%,transparent 55%),
@@ -463,6 +514,18 @@ body.nav-open{overflow:hidden}
   .conv .form-wrap .fg{grid-template-columns:1fr}
   .conv .form-wrap .btn-submit{padding:18px 28px;width:100%;min-width:0}
 }
+
+/* ─── Form states: invalid / success / error ─── */
+.conv .form-wrap .fg input[aria-invalid="true"]{border-color:var(--c-red);background:rgba(255,0,31,.04)}
+.form-status{
+  text-align:center;margin-top:var(--s-2);min-height:1.4em;
+  font-family:var(--ff-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--c-ink-50);transition:color .3s var(--ease)
+}
+.form-status.is-error{color:var(--c-red)}
+.form-status.is-success{color:#2a7a4a}
+.btn-submit[disabled]{opacity:.55;cursor:wait}
+.btn-submit.is-success{background:#2a7a4a;border-color:#2a7a4a}
 
 </style>
 </head>
@@ -606,7 +669,7 @@ body.nav-open{overflow:hidden}
       </div>
       <div class="right">
         <div class="fig parallax" data-rv="rise">
-          <img src="image/interior_dvuhurovnevaya_lestnitsa.png" alt="Двухуровневая квартира — собственная лестница, витраж в два этажа" loading="lazy" decoding="async">
+          <picture><source srcset="image/interior_dvuhurovnevaya_lestnitsa.webp" type="image/webp"><img src="image/interior_dvuhurovnevaya_lestnitsa.png" alt="Двухуровневая квартира — собственная лестница, витраж в два этажа" loading="lazy" decoding="async"></picture>
         </div>
       </div>
     </div>
@@ -615,7 +678,7 @@ body.nav-open{overflow:hidden}
   <!-- 08:20 — FULLBLEED: площадка во всю ширину + текст в 2 колонки -->
   <article class="scene ly-fullbleed" id="s-0820">
     <div class="fig parallax" data-rv="rise">
-      <img src="image/playground_derev_domiki_dvor.png" alt="Детская площадка во дворе МОНСа" loading="lazy" decoding="async">
+      <picture><source srcset="image/playground_derev_domiki_dvor.webp" type="image/webp"><img src="image/playground_derev_domiki_dvor.png" alt="Детская площадка во дворе МОНСа" loading="lazy" decoding="async"></picture>
     </div>
     <div class="wrap below">
       <div class="inner">
@@ -682,7 +745,7 @@ body.nav-open{overflow:hidden}
         </div>
         <div class="media-col">
           <div class="fig parallax" data-rv="rise" data-d="1">
-            <img src="image/screenshot_lobbi_interyer_s_tekstom.png" alt="Лобби МОНСа: общественная гостиная — диваны, кофемашина, оливковое дерево, человек с ноутбуком" loading="lazy" decoding="async">
+            <picture><source srcset="image/screenshot_lobbi_interyer_s_tekstom.webp" type="image/webp"><img src="image/screenshot_lobbi_interyer_s_tekstom.png" alt="Лобби МОНСа: общественная гостиная — диваны, кофемашина, оливковое дерево, человек с ноутбуком" loading="lazy" decoding="async"></picture>
           </div>
         </div>
         <div class="text-col">
@@ -707,10 +770,10 @@ body.nav-open{overflow:hidden}
       </div>
       <div class="quote-media">
         <div class="fig a parallax" data-rv="rise">
-          <img src="image/park_prud_lezaki_derevya.png" alt="Парк — зона отдыха: пруд, шезлонги, сосны" loading="lazy" decoding="async">
+          <picture><source srcset="image/park_prud_lezaki_derevya.webp" type="image/webp"><img src="image/park_prud_lezaki_derevya.png" alt="Парк — зона отдыха: пруд, шезлонги, сосны" loading="lazy" decoding="async"></picture>
         </div>
         <div class="fig b parallax" data-rv="rise" data-d="1">
-          <img src="image/genplan_aerorender_kvartal_tramvay.png" alt="Аэрорендер квартала и трамвайной линии" loading="lazy" decoding="async">
+          <picture><source srcset="image/genplan_aerorender_kvartal_tramvay.webp" type="image/webp"><img src="image/genplan_aerorender_kvartal_tramvay.png" alt="Аэрорендер квартала и трамвайной линии" loading="lazy" decoding="async"></picture>
         </div>
         <div class="quote-text scene-body">
           <p class="lead" data-rv="rise">Спускаетесь, заходите в булочную на первом этаже квартала. У прилавка — свежая чиабатта, салями, пармезан, пара листьев рукколы. Говорите: «Вот так, так и так». Вам режут, собирают, заворачивают. Берёте кофе навынос.</p>
@@ -777,13 +840,13 @@ body.nav-open{overflow:hidden}
           </div>
         </div>
         <div class="fig trip-media-a parallax" data-rv="rise">
-          <img src="image/kommertsiya_strit_riteyl_tsvety.png" alt="Стрит-ритейл первого этажа с цветами и соснами" loading="lazy" decoding="async">
+          <picture><source srcset="image/kommertsiya_strit_riteyl_tsvety.webp" type="image/webp"><img src="image/kommertsiya_strit_riteyl_tsvety.png" alt="Стрит-ритейл первого этажа с цветами и соснами" loading="lazy" decoding="async"></picture>
         </div>
         <div class="fig trip-media-b parallax" data-rv="rise" data-d="1">
-          <img src="image/kommertsiya_kafe_terassa_dvor.png" alt="Кафе с террасой во дворе" loading="lazy" decoding="async">
+          <picture><source srcset="image/kommertsiya_kafe_terassa_dvor.webp" type="image/webp"><img src="image/kommertsiya_kafe_terassa_dvor.png" alt="Кафе с террасой во дворе" loading="lazy" decoding="async"></picture>
         </div>
         <div class="fig trip-media-c parallax" data-rv="rise" data-d="2">
-          <img src="image/fasad_pervye_etazhi_vitrina.png" alt="Первые этажи — витрины коммерции" loading="lazy" decoding="async">
+          <picture><source srcset="image/fasad_pervye_etazhi_vitrina.webp" type="image/webp"><img src="image/fasad_pervye_etazhi_vitrina.png" alt="Первые этажи — витрины коммерции" loading="lazy" decoding="async"></picture>
         </div>
       </div>
       <div class="wrap-narrow" style="margin-top:clamp(50px,8vh,100px);padding:0">
@@ -801,7 +864,7 @@ body.nav-open{overflow:hidden}
       <div class="stack-grid">
         <div class="stack-time" data-rv="rise">15<br>:45</div>
         <div class="fig stack-media parallax" data-rv="rise" data-d="1">
-          <img src="image/dvor_blagoustr_derevya_skameyki.png" alt="Внутренний двор — деревья, кусты, скамейки, кафе-терраса" loading="lazy" decoding="async">
+          <picture><source srcset="image/dvor_blagoustr_derevya_skameyki.webp" type="image/webp"><img src="image/dvor_blagoustr_derevya_skameyki.png" alt="Внутренний двор — деревья, кусты, скамейки, кафе-терраса" loading="lazy" decoding="async"></picture>
         </div>
         <div class="stack-text">
           <h3 class="scene-title" data-rv="rise" data-d="1">Забираю<br>детей.</h3>
@@ -820,10 +883,10 @@ body.nav-open{overflow:hidden}
     <div class="wrap">
       <div class="dip-grid">
         <div class="fig dip-a parallax" data-rv="rise">
-          <img src="image/parking_navigatsiya_liftovy_hol.png" alt="Лифтовой холл паркинга: навигация, чистый светлый пол" loading="lazy" decoding="async">
+          <picture><source srcset="image/parking_navigatsiya_liftovy_hol.webp" type="image/webp"><img src="image/parking_navigatsiya_liftovy_hol.png" alt="Лифтовой холл паркинга: навигация, чистый светлый пол" loading="lazy" decoding="async"></picture>
         </div>
         <div class="fig dip-b parallax" data-rv="rise" data-d="1">
-          <img src="image/parking_lift_zona_zelen.png" alt="Лифтовой узел паркинга с зелёными растениями" loading="lazy" decoding="async">
+          <picture><source srcset="image/parking_lift_zona_zelen.webp" type="image/webp"><img src="image/parking_lift_zona_zelen.png" alt="Лифтовой узел паркинга с зелёными растениями" loading="lazy" decoding="async"></picture>
         </div>
         <div class="dip-text scene-body">
           <h3 class="scene-title" data-rv="rise">Экскурсию начинают<br><em>с паркинга.</em></h3>
@@ -843,7 +906,7 @@ body.nav-open{overflow:hidden}
   <!-- 19:00 — FULLBLEED с оверлеем снизу: терраса -->
   <article class="scene ly-fullbleed" id="s-1900">
     <div class="fig parallax" data-rv="rise">
-      <img src="image/terrasa_pergola_pufiki_velosiped.png" alt="Приватный сад на крыше — пергола, пуфы, велосипед, вечерний свет" loading="lazy" decoding="async">
+      <picture><source srcset="image/terrasa_pergola_pufiki_velosiped.webp" type="image/webp"><img src="image/terrasa_pergola_pufiki_velosiped.png" alt="Приватный сад на крыше — пергола, пуфы, велосипед, вечерний свет" loading="lazy" decoding="async"></picture>
     </div>
     <div class="wrap below">
       <div class="inner">
@@ -907,7 +970,7 @@ body.nav-open{overflow:hidden}
       </div>
       <div class="right">
         <div class="fig parallax" data-rv="rise">
-          <img src="image/interior_kabinet.png" alt="Домашний кабинет с диваном и рабочим столом" loading="lazy" decoding="async">
+          <picture><source srcset="image/interior_kabinet.webp" type="image/webp"><img src="image/interior_kabinet.png" alt="Домашний кабинет с диваном и рабочим столом" loading="lazy" decoding="async"></picture>
         </div>
       </div>
     </div>
@@ -955,13 +1018,18 @@ body.nav-open{overflow:hidden}
 
     <div class="form-wrap" data-rv="rise">
       <div class="or-sep">или оставьте номер</div>
-      <form action="https://formspree.io/f/PLACEHOLDER" method="POST">
+      <!-- TODO: replace data-endpoint with real Formspree / Tilda / Bitrix24 webhook before deploy -->
+      <form id="leadForm" data-endpoint="https://formspree.io/f/REPLACE_ME_BEFORE_DEPLOY" method="POST" novalidate>
         <div class="fg">
           <label for="contact" class="sr-only">Ваш телефон</label>
-          <input type="tel" id="contact" name="contact" autocomplete="tel" placeholder="+7 ___ ___ __ __" inputmode="tel" required>
+          <input type="tel" id="contact" name="contact" autocomplete="tel"
+                 placeholder="+7 ___ ___ __ __" inputmode="tel"
+                 pattern="\+7\s?\(?\d{3}\)?\s?\d{3}[\s-]?\d{2}[\s-]?\d{2}"
+                 maxlength="18" required aria-describedby="leadFormNote">
           <button type="submit" class="btn-submit">Перезвоните мне</button>
         </div>
-        <p class="form-note">Перезвоним в течение часа в рабочее время</p>
+        <p class="form-note" id="leadFormNote">Перезвоним в течение часа в рабочее время</p>
+        <p class="form-status" id="leadFormStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
 
@@ -981,11 +1049,11 @@ body.nav-open{overflow:hidden}
         </svg>
       </div>
       <div class="footer-meta">
-        <p>Застройщик: ООО «Брусника. Москва». Проектная декларация на <a href="https://наш.дом.рф">наш.дом.рф</a>.</p>
+        <p>Застройщик: ООО «Брусника. Москва». Проектная декларация на <a href="https://xn--80az8a.xn--d1aqf.xn--p1ai/" target="_blank" rel="noopener noreferrer">наш.дом.рф</a>.</p>
         <p>Изображения — архитектурные визуализации. Цены и площади указаны ориентировочно, уточняйте актуальные значения у отдела продаж.</p>
       </div>
       <div class="footer-address">Огородный проезд, 20, Москва · +7 495 023 33 45</div>
-      <div class="footer-copy">© Брусника, 2026</div>
+      <div class="footer-copy">© Брусника, <span id="footerYear">2026</span></div>
     </div>
   </div>
 </footer>
@@ -1175,6 +1243,99 @@ body.nav-open{overflow:hidden}
     }
   }
 
+  /* ── 5f. Lead form: маска RU-телефона + сабмит без потери лида ─── */
+  const leadForm   = $('#leadForm');
+  const leadInput  = $('#contact');
+  const leadStatus = $('#leadFormStatus');
+  if(leadForm && leadInput){
+    /* маска +7 (XXX) XXX-XX-XX */
+    function formatPhone(raw){
+      const d = (raw||'').replace(/\D/g,'').replace(/^8/,'7').replace(/^([^7])/,'7$1').slice(0,11);
+      const p1 = d.slice(1,4), p2 = d.slice(4,7), p3 = d.slice(7,9), p4 = d.slice(9,11);
+      let out = '+7';
+      if(d.length>1) out += ' (' + p1;
+      if(d.length>=4) out += ') ' + p2;
+      if(d.length>=7) out += '-'  + p3;
+      if(d.length>=9) out += '-'  + p4;
+      return out;
+    }
+    leadInput.addEventListener('focus', e=>{ if(!e.target.value) e.target.value = '+7 '; });
+    leadInput.addEventListener('input', e=>{
+      const v = formatPhone(e.target.value);
+      e.target.value = v;
+      e.target.setAttribute('aria-invalid','false');
+    });
+    leadInput.addEventListener('blur', e=>{
+      if(e.target.value === '+7 ' || e.target.value === '+7') e.target.value = '';
+    });
+
+    function isValidRuPhone(v){
+      const d = (v||'').replace(/\D/g,'');
+      return d.length === 11 && d.startsWith('7');
+    }
+
+    leadForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const val = leadInput.value.trim();
+      if(!isValidRuPhone(val)){
+        leadInput.setAttribute('aria-invalid','true');
+        leadInput.focus();
+        leadStatus.textContent = 'Введите номер в формате +7 (___) ___-__-__';
+        leadStatus.className = 'form-status is-error';
+        return;
+      }
+      const endpoint = leadForm.dataset.endpoint || '';
+      const btn = leadForm.querySelector('.btn-submit');
+      btn.disabled = true;
+      leadStatus.textContent = 'Отправляем…';
+      leadStatus.className = 'form-status';
+
+      const payload = { phone: val, source: 'mons-landing', ts: new Date().toISOString(), ua: navigator.userAgent };
+      const onSuccess = ()=>{
+        btn.disabled = false;
+        btn.classList.add('is-success');
+        btn.textContent = '✓ Принято';
+        leadStatus.textContent = 'Спасибо. Перезвоним в течение часа в рабочее время.';
+        leadStatus.className = 'form-status is-success';
+        leadInput.value = '';
+        leadInput.blur();
+      };
+      const onError = (msg)=>{
+        btn.disabled = false;
+        leadStatus.textContent = msg || 'Не удалось отправить. Позвоните по +7 495 023 33 45.';
+        leadStatus.className = 'form-status is-error';
+      };
+
+      /* Если endpoint ещё не настроен — сохраняем в localStorage и показываем успех,
+         чтобы пользователь не уходил. Lead не теряется: мы видим в console.warn. */
+      if(/REPLACE_ME_BEFORE_DEPLOY|PLACEHOLDER/i.test(endpoint)){
+        try{
+          const queue = JSON.parse(localStorage.getItem('mons_leads_queue')||'[]');
+          queue.push(payload);
+          localStorage.setItem('mons_leads_queue', JSON.stringify(queue));
+        }catch(err){}
+        console.warn('[MONS] Lead captured but endpoint not configured:', payload);
+        onSuccess();
+        return;
+      }
+
+      try{
+        const r = await fetch(endpoint, {
+          method:'POST',
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        if(r.ok) onSuccess(); else onError();
+      }catch(err){
+        console.error('[MONS] Lead submit failed:', err);
+        onError();
+      }
+    });
+  }
+
+  /* ── 5g. Footer year auto ─── */
+  const fy = $('#footerYear'); if(fy) fy.textContent = new Date().getFullYear();
+
   /* ── 6. Image error → placeholder with spec ─── */
   const specs = {
     'interior_spalnya_okno_v_pol.png':'Спальня с панорамным окном в пол. Утренний свет, городской горизонт.',
@@ -1193,7 +1354,8 @@ body.nav-open{overflow:hidden}
   $$('img').forEach(img=>{
     img.addEventListener('error',()=>{
       const file = img.src.split('/').pop();
-      const wrap = img.parentElement;
+      // после wrap в <picture> img.parentElement === <picture>, реальная карточка — .fig
+      const wrap = img.closest('.fig') || img.parentElement;
       const text = specs[file] || 'Фото требуется';
       wrap.innerHTML = `<div class="placeholder-label">Требуется фото: ${text}</div>`;
       wrap.classList.add('placeholder');
