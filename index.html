@@ -428,12 +428,15 @@ body.nav-open{overflow:hidden}
 @media(max-width:640px){
   /* убираем cinematic-слейт сверху — на мобиле перекрывался с адресной плашкой */
   .hero-in::before{display:none}
-  /* адресная плашка справа — компактнее и не липнет к краю */
+  /* адресная плашка — под header'ом справа, компактно, чтобы не наезжала на hero-sub */
   .hero-corner{
-    top:auto;bottom:clamp(120px,18vh,180px);left:var(--pad);right:auto;
-    text-align:left;font-size:10px;letter-spacing:.14em;padding:6px 10px;
-    background:rgba(10,10,10,.32);backdrop-filter:blur(2px);
-    -webkit-backdrop-filter:blur(2px);max-width:calc(100% - 2*var(--pad))
+    top:64px;right:var(--pad);left:auto;bottom:auto;
+    text-align:right;font-size:9.5px;letter-spacing:.12em;line-height:1.5;
+    padding:5px 8px;
+    background:rgba(10,10,10,.42);backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+    border-color:rgba(243,237,226,.18);
+    max-width:55vw
   }
   /* hero-meta: чтобы не теснилось у нижнего края */
   .hero-in{padding-bottom:clamp(40px,8vh,80px)}
@@ -449,7 +452,7 @@ body.nav-open{overflow:hidden}
   .phone-xl{word-break:keep-all;white-space:nowrap;font-size:clamp(28px,8vw,52px)}
 }
 @media(max-width:480px){
-  .hero-corner{font-size:9.5px;padding:5px 8px}
+  .hero-corner{font-size:9px;padding:4px 7px;max-width:60vw;line-height:1.45}
   /* act-numeral — гигантская "II" — не должна вылезать */
   .act-numeral{font-size:clamp(64px,16vw,108px)}
 }
