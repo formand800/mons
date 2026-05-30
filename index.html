@@ -154,14 +154,7 @@ body.nav-open{overflow:hidden}
 /* film grain overlay */
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .14 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/></svg>");mix-blend-mode:overlay;opacity:.3}
 .hero-in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(70px,10vh,140px)}
-/* Slate — короткая cinema-плашка вверху hero, на русском */
-.hero-in::before{
-  content:"Брусника · Бутырский · Москва · 2027";
-  position:absolute;top:clamp(120px,15vh,180px);left:var(--pad);
-  font-family:var(--ff-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-  color:rgba(243,237,226,.65);
-  padding:6px 0;border-top:1px solid rgba(243,237,226,.32);border-bottom:1px solid rgba(243,237,226,.32);
-}
+/* Slate — короткая cinema-плашка вверху hero, удалена по запросу клиента */
 .hero-eyebrow{
   color:var(--c-accent-warm);
   margin-bottom:var(--s-3);
@@ -171,13 +164,7 @@ body.nav-open{overflow:hidden}
 .hero-title .amp{color:var(--c-accent-warm);display:inline-block;font-style:normal;transform:translateY(.04em)}
 .hero-sub{font-family:var(--ff-serif);font-style:italic;font-weight:var(--fw-light);font-size:var(--fs-lead);line-height:1.42;color:rgba(243,237,226,.86);margin:var(--s-5) 0 0;max-width:36ch;text-wrap:pretty}
 .hero-meta{display:flex;gap:var(--s-3);margin-top:var(--s-5);font-family:var(--ff-mono);font-size:11px;color:rgba(243,237,226,.6);letter-spacing:.32em;text-transform:uppercase;flex-wrap:wrap}
-.hero-corner{
-  position:absolute;top:clamp(120px,15vh,180px);right:var(--pad);z-index:3;
-  text-align:right;font-family:var(--ff-mono);font-size:11px;letter-spacing:.18em;
-  text-transform:uppercase;color:rgba(243,237,226,.55);line-height:1.7;
-  padding:8px 12px;border:1px solid rgba(243,237,226,.22);
-}
-.hero-corner strong{color:#f3ede2;font-weight:var(--fw-med)}
+/* hero-corner — удалён по запросу клиента (мешал на mobile и desktop) */
 .hero-scroll{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:42px;background:rgba(243,237,226,.4);animation:scrollPulse 2.6s var(--ease) infinite}
 @keyframes scrollPulse{0%{transform:translateX(-50%) scaleY(0);transform-origin:top}45%{transform:translateX(-50%) scaleY(1);transform-origin:top}55%{transform:translateX(-50%) scaleY(1);transform-origin:bottom}100%{transform:translateX(-50%) scaleY(0);transform-origin:bottom}}
 
@@ -424,27 +411,27 @@ body.nav-open{overflow:hidden}
 }
 @media(max-width:375px){.wrap,.wrap-narrow{padding:0 var(--s-2)}}
 
-/* ─── MOBILE FIX v1: hero overlap, tap-targets, gaps ─── */
+/* ─── MOBILE FIX v2: hero, padding, tap-targets ─── */
+/* sticky mobile-cta убираем полностью — мешает чтению контента */
+.mobile-cta{display:none !important}
+
 @media(max-width:640px){
-  /* убираем cinematic-слейт сверху — на мобиле перекрывался с адресной плашкой */
-  .hero-in::before{display:none}
-  /* адресная плашка — под header'ом справа, компактно, чтобы не наезжала на hero-sub */
-  .hero-corner{
-    top:64px;right:var(--pad);left:auto;bottom:auto;
-    text-align:right;font-size:9.5px;letter-spacing:.12em;line-height:1.5;
-    padding:5px 8px;
-    background:rgba(10,10,10,.42);backdrop-filter:blur(3px);
-    -webkit-backdrop-filter:blur(3px);
-    border-color:rgba(243,237,226,.18);
-    max-width:55vw
-  }
   /* hero-meta: чтобы не теснилось у нижнего края */
   .hero-in{padding-bottom:clamp(40px,8vh,80px)}
   /* нижняя scroll-pulse полоска — мешает CTA */
   .hero-scroll{display:none}
   /* убираем кричащую пустоту между сценами на мобиле */
   .scene{padding:clamp(56px,9vh,96px) 0}
-  .ly-fullbleed .below{padding-top:clamp(20px,4vh,40px)}
+
+  /* === ГОРИЗОНТАЛЬНЫЕ ОТСТУПЫ === */
+  /* .ly-fullbleed .below имел padding:... 0 — обнулял .wrap padding. Возвращаем */
+  .ly-fullbleed .below{padding:clamp(20px,4vh,40px) var(--pad) clamp(40px,8vh,80px)}
+  /* .ly-quote — текст и сетка приклеивались к краю */
+  .ly-quote .quote-text{padding:0 var(--pad)}
+  .ly-quote .quote-media{padding:0 var(--pad);column-gap:16px;row-gap:16px}
+  /* .ly-asym, .ly-trip, .ly-stack, .ly-dip — гарантируем padding из .wrap */
+  .ly-fullbleed .fig{height:60vh}
+
   /* tap-targets */
   .mobile-nav-item{padding:14px 0;min-height:44px;display:flex;align-items:center}
   .header-phone,.brand{min-height:44px;display:inline-flex;align-items:center}
@@ -452,9 +439,11 @@ body.nav-open{overflow:hidden}
   .phone-xl{word-break:keep-all;white-space:nowrap;font-size:clamp(28px,8vw,52px)}
 }
 @media(max-width:480px){
-  .hero-corner{font-size:9px;padding:4px 7px;max-width:60vw;line-height:1.45}
+  :root{--pad:22px}
   /* act-numeral — гигантская "II" — не должна вылезать */
   .act-numeral{font-size:clamp(64px,16vw,108px)}
+  /* dialog диалог — отступы */
+  .dialog{padding-left:0}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -592,11 +581,6 @@ body.nav-open{overflow:hidden}
      ═══════════════════════════════════════════════════════════════ -->
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-corner" data-rv="rise" data-d="3">
-    <strong>Бутырский, Москва</strong><br>
-    Огородный проезд, 20<br>
-    сдача III кв. 2027
-  </div>
   <div class="wrap hero-in">
     <p class="eyebrow hero-eyebrow" data-rv="rise">Один будний день в МОНСе</p>
     <h1 class="hero-title" data-rv="rise" data-d="1">МОНС<span class="amp">.</span></h1>
