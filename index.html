@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#000000">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="description" content="МОНС — квартал Брусники в Бутырском районе Москвы. 11 сцен одного будничного дня: окно в пол, школа во дворе, парк на высоте, лобби-гостиная. Сдача III кв. 2027.">
 <meta name="keywords" content="МОНС, Брусника, Бутырский, новостройка Москва, квартиры с окном в пол, ЖК Огородный проезд, премиум новостройка СВАО">
 <meta name="robots" content="index, follow">
@@ -411,6 +413,15 @@ body.nav-open{overflow:hidden}
 }
 @media(max-width:375px){.wrap,.wrap-narrow{padding:0 var(--s-2)}}
 
+/* ─── iOS phone-link: убираем системную стрелку и keep no-wrap ─── */
+.phone-xl,.header-phone,.mobile-nav-phone,.footer-phone-link{
+  white-space:nowrap;word-break:keep-all;-webkit-text-decoration-skip:none
+}
+.footer-phone-link{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.footer-phone-link:hover{color:#f3ede2}
+/* iOS Safari: disable touch callout / phone detection bubble */
+a[href^="tel:"]{-webkit-touch-callout:none;text-decoration:inherit}
+
 /* ─── MOBILE FIX v2: hero, padding, tap-targets ─── */
 /* sticky mobile-cta убираем полностью — мешает чтению контента */
 .mobile-cta{display:none !important}
@@ -544,11 +555,7 @@ body.nav-open{overflow:hidden}
         <span class="brand-divider" aria-hidden="true"></span>
         <span class="brand-name">МОНС</span>
       </a>
-      <nav class="main-nav">
-        <a href="#day">День</a>
-        <a href="#conv">Офис продаж</a>
-      </nav>
-      <a href="tel:+74950233345" class="header-phone">+7 495 023 33 45</a>
+      <a href="tel:+74950233345" class="header-phone">+7&nbsp;495&nbsp;023&nbsp;33&nbsp;45</a>
       <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span>
       </button>
@@ -560,11 +567,7 @@ body.nav-open{overflow:hidden}
      MOBILE NAV (slide-in)
      ═══════════════════════════════════════════════════════════════ -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <nav class="mobile-nav-list">
-    <a href="#day" class="mobile-nav-item">День</a>
-    <a href="#conv" class="mobile-nav-item">Офис продаж</a>
-  </nav>
-  <a href="tel:+74950233345" class="mobile-nav-phone">+7 495 023 33 45</a>
+  <a href="tel:+74950233345" class="mobile-nav-phone">+7&nbsp;495&nbsp;023&nbsp;33&nbsp;45</a>
 </div>
 <div class="mobile-nav-scrim" id="mobileNavScrim" aria-hidden="true"></div>
 
@@ -612,7 +615,7 @@ body.nav-open{overflow:hidden}
         Но мы&nbsp;<strong>продумали каждый этаж</strong>&nbsp;— от&nbsp;лифтового холла до&nbsp;окна в&nbsp;ванной. Ниже&nbsp;— как будет устроен ваш день, когда вы здесь поселитесь.
       </p>
       <p class="prologue-cta" data-rv="rise" data-d="4">
-        Посмотрите, как будет ваш день.
+        Посмотрите, каким будет ваш день.
       </p>
     </div>
   </div>
@@ -972,7 +975,7 @@ body.nav-open{overflow:hidden}
           <span class="finale-time-caption" data-rv="rise" data-d="2">Финальная сцена дня</span>
         </div>
         <div class="finale-text scene-body">
-          <h3 class="scene-title" data-rv="rise" data-d="1">Окна,<br>в которые <em>возвращаются.</em></h3>
+          <h3 class="scene-title" data-rv="rise" data-d="1">Вид,<br>к&nbsp;которому <em>возвращаются.</em></h3>
           <p class="lead" data-rv="rise" data-d="2">Перед сном вы подходите к окну. Не зашториваете. За окном — парк, башня и собственные корпуса МОНСа: десять зданий, ни одно не повторяет другое, у каждого свой поворот к городу.</p>
           <p data-rv="rise" data-d="2">Никаких соседей напротив, в чьи окна неловко смотреть в ответ. У каждого вашего окна — своя сцена.</p>
           <p data-rv="rise" data-d="3">Свет горит в чужих окнах. Там — люди вашего ритма: те, для кого вид из окна не бонус, а конструкция дома.</p>
@@ -996,11 +999,11 @@ body.nav-open{overflow:hidden}
 
     <div class="conv-head">
       <span class="eyebrow" data-rv="rise"><span class="dot">●</span>Офис продаж</span>
-      <h2 data-rv="rise" data-d="1">Приходите в офис —<br><em>выберем окно.</em></h2>
+      <h2 data-rv="rise" data-d="1">Приходите в офис —<br><em>покажем квартиру.</em></h2>
       <p data-rv="rise" data-d="2">Дом сдадим в третьем квартале 2027-го. До тех пор у нас в офисе — масштабный макет квартала, образцы отделки и человек, который ответит на любой вопрос. Встречи — по записи, один на один.</p>
     </div>
 
-    <a href="tel:+74950233345" class="phone-xl" data-rv="rise">+7 495 023 33 45</a>
+    <a href="tel:+74950233345" class="phone-xl" data-rv="rise">+7&nbsp;495&nbsp;023&nbsp;33&nbsp;45</a>
     <p class="phone-note" data-rv="rise" data-d="2">Звонок — самый быстрый путь</p>
 
     <div class="form-wrap" data-rv="rise">
@@ -1039,7 +1042,7 @@ body.nav-open{overflow:hidden}
         <p>Застройщик: ООО «Брусника. Москва». Проектная декларация на <a href="https://xn--80az8a.xn--d1aqf.xn--p1ai/" target="_blank" rel="noopener noreferrer">наш.дом.рф</a>.</p>
         <p>Изображения — архитектурные визуализации. Цены и площади указаны ориентировочно, уточняйте актуальные значения у отдела продаж.</p>
       </div>
-      <div class="footer-address">Огородный проезд, 20, Москва · +7 495 023 33 45</div>
+      <div class="footer-address">Огородный&nbsp;проезд,&nbsp;20,&nbsp;Москва · <a href="tel:+74950233345" class="footer-phone-link">+7&nbsp;495&nbsp;023&nbsp;33&nbsp;45</a></div>
       <div class="footer-copy">© Брусника, <span id="footerYear">2026</span></div>
     </div>
   </div>
